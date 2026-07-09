@@ -210,11 +210,16 @@
       }
       function sendToGoogle() {
         const btnSubmit = document.getElementById('btnSubmit');
-        btnSubmit.innerText = "กำลังประมวลผล..."; btnSubmit.disabled = true;
+        btnSubmit.innerText = "กำลังประมวลผล...";
+        btnSubmit.disabled = true;
+        
         const contactRadio = document.querySelector('input[name="wantContact"]:checked');
         const emailRadio = document.querySelector('input[name="wantEmail"]:checked');
+
         let finalBusinessType = document.getElementById('businessType').value;
-        if (finalBusinessType === "H. อื่น ๆ") { finalBusinessType = "อื่น ๆ: " + document.getElementById('otherBusiness').value; }
+        if (finalBusinessType === "H. อื่น ๆ") {
+          finalBusinessType = "อื่น ๆ: " + document.getElementById('otherBusiness').value;
+        }
 
         var formData = {
           email: document.getElementById('email').value,
@@ -232,7 +237,9 @@
           pdpaConsent: document.getElementById('pdpaConsent').checked ? "ยินยอม" : "ไม่ยินยอม",
           lineUid: userLineId 
         };
+        
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEx570SZXYzJk2rj3smMplYEv2uiA6MepL0iVKa_0_jlDW7UHwzAc7_VvETvY_aiVdHw/exec";
+        
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -241,13 +248,47 @@
         .then(response => response.json())
         .then(data => {
           if(data.status === "success") {
-             alert(data.message); document.getElementById('sparkForm').reset();
-             toggleForm(); toggleOtherBusiness(); toggleContactFields();
-             if (liff.isInClient()) { liff.closeWindow(); }
-          } else { alert("เกิดปัญหา: " + data.message); }
+             // 🎯 ส่วนที่แก้ไข: ลบ alert ดำๆ ออก แล้วเปลี่ยนดีไซน์กล่องเป็นหน้าขอบคุณทันที
+             const container = document.querySelector('.form-container');
+             container.innerHTML = `
+               <div style="text-align: center; padding: 40px 10px;">
+                 <div style="font-size: 60px; margin-bottom: 20px;">🎉</div>
+                 <h2 style="color: #1a73e8; margin-bottom: 15px;">ขอบคุณที่ตอบแบบสอบถาม</h2>
+                 <p style="font-size: 16px; color: #444; line-height: 1.6; margin-bottom: 30px;">
+                   ท่านสามารถดูผลลัพธ์การประเมินโครงสร้างธุรกิจ<br>ได้ที่แชทใน <strong>LINE OA</strong> ทันทีครับ
+                 </p>
+                 <button id="btnGoToLine" style="width: 100%; padding: 14px; background-color: #06C755; color: white; border: none; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer;">
+                   เปิด LINE OA เพื่อดูผลลัพธ์
+                 </button>
+               </div>
+             `;
+
+             // ตั้งค่าให้ปุ่มทำงานเมื่อลูกค้าคลิก
+             document.getElementById('btnGoToLine').onclick = function() {
+               // เปลี่ยนลิงก์ด้านล่างนี้ให้เป็น ลิงก์ LINE OA ของ SPARK นะครับ
+               const lineOaUrl = "https://line.me/R/ti/p/@ชื่อLINE_OAของคุณ"; 
+               
+               if (liff.isInClient()) {
+                 // ถ้าเปิดในแอป LINE ให้เด้งไปที่ LINE OA นั้น แล้วปิดหน้าต่างลงทันที
+                 window.location.href = lineOaUrl;
+                 setTimeout(() => { liff.closeWindow(); }, 500);
+               } else {
+                 // ถ้าเปิดบนเบราว์เซอร์ปกติ ให้เปิดแท็บใหม่ไปที่ LINE OA
+                 window.open(lineOaUrl, '_blank');
+               }
+             };
+
+          } else {
+             alert("เกิดปัญหา: " + data.message);
+             btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+             btnSubmit.disabled = false;
+          }
         })
-        .catch(error => { alert("เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบอินเทอร์เน็ต"); })
-        .finally(() => { btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน"; btnSubmit.disabled = false; });
+        .catch(error => {
+          alert("เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบอินเทอร์เน็ต");
+          btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+          btnSubmit.disabled = false;
+        });
       }
     </script>
   </body>
