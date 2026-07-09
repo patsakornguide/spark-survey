@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; background-color: #f6f7f9}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; background-color: #f6f7f9; min-height: 15.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; background-color: #f6f7f9}
+    span.s3 {font: 12.0px Times; font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;base target="_top"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f0f2f5; padding: 20px; color: #333; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.form-container { background-color: #ffffff; max-width: 650px; margin: 0 auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>h2 { color: #1a73e8; text-align: center; margin-bottom: 5px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>p.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 25px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.form-group { margin-bottom: 20px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>input[type="text"], input[type="email"], input[type="tel"], select, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 14px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.radio-group { margin-bottom: 8px; font-size: 14px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.radio-group input { margin-right: 8px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.pdpa-box { background-color: #f9f9f9; border: 1px solid #e2e8f0; padding: 15px; border-radius: 4px; font-size: 12px; color: #555; margin-bottom: 15px; line-height: 1.5; height: 100px; overflow-y: scroll; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>button { width: 100%; padding: 14px; background-color: #1a73e8; color: white; border: none; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; transition: background-color 0.3s; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>button:hover { background-color: #1557b0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>button:disabled { background-color: #ccc; cursor: not-allowed; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>/* เพิ่ม CSS สำหรับจัดการสถานะฟอร์มที่ถูกล็อก */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>fieldset { border: none; padding: 0; margin: 0; transition: opacity 0.3s ease; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>fieldset:disabled { opacity: 0.4; pointer-events: none; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;body&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="form-container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h2&gt;SPARK Growth Arcade&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p class="subtitle"&gt;แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;form id="sparkForm" onsubmit="event.preventDefault(); sendToGoogle();"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;label&gt;นโยบายความเป็นส่วนตัว (PDPA Consent Form)&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="pdpa-box" style="background-color: #f9f9f9; border: 1px solid #e2e8f0; padding: 15px; border-radius: 4px; font-size: 13px; color: #444; margin-bottom: 15px; line-height: 1.6; height: 200px; overflow-y: scroll;"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h4 style="margin-top: 0; text-align: center; color: #1a73e8; font-size: 15px;"&gt;หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล (Consent Form)&lt;/h4&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p style="margin-top: 0;"&gt;&lt;strong&gt;บริษัท สปาร์ค แฟคเทอร์ จำกัด ("บริษัท")&lt;/strong&gt; ให้ความสำคัญอย่างยิ่งยวดกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน บริษัทจึงจัดทำเอกสารฉบับนี้ขึ้นเพื่อขอความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) โดยมีรายละเอียดดังต่อไปนี้&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;1. ข้อมูลส่วนบุคคลที่บริษัทเก็บรวบรวม&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>บริษัทมีความจำเป็นต้องเก็บรวบรวมข้อมูลส่วนบุคคลของท่านที่ได้ให้ไว้ผ่านแบบสอบถามนี้ ได้แก่&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;ul style="margin-top: 5px; margin-bottom: 15px; padding-left: 20px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;ข้อมูลระบุตัวตนและข้อมูลการติดต่อ เช่น ชื่อ-นามสกุล, หมายเลขโทรศัพท์ และที่อยู่อีเมล&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;ข้อมูลเกี่ยวกับโครงสร้างธุรกิจ ปัญหา และเป้าหมายทางการตลาดของท่าน&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;2. วัตถุประสงค์ในการเก็บรวบรวมและการใช้ข้อมูล&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>บริษัทจะนำข้อมูลส่วนบุคคลของท่านไปใช้เพื่อวัตถุประสงค์ดังต่อไปนี้เท่านั้น:&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;ul style="margin-top: 5px; margin-bottom: 15px; padding-left: 20px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;เพื่อประมวลผลและจัดส่งผลลัพธ์การวิเคราะห์แบบประเมินแนวทางการตลาดให้แก่ท่านผ่านทางอีเมล&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;เพื่อให้เจ้าหน้าที่ของบริษัทติดต่อกลับเพื่อนำเสนอข้อมูล ให้คำปรึกษา หรือเสนอผลิตภัณฑ์และบริการที่สอดคล้องกับความต้องการของท่าน&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;เพื่อนำข้อมูลไปวิเคราะห์เชิงสถิติและพัฒนาปรับปรุงบริการของบริษัทให้มีประสิทธิภาพมากยิ่งขึ้น&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;3. การเปิดเผยข้อมูลส่วนบุคคล&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>บริษัทจะเก็บรักษาข้อมูลของท่านไว้เป็นความลับ และจะไม่มีการเปิดเผยข้อมูลส่วนบุคคลของท่านให้แก่บุคคลภายนอก เว้นแต่จะได้รับความยินยอมจากท่าน หรือเป็นการปฏิบัติตามที่กฎหมายกำหนด&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;4. ระยะเวลาในการเก็บรักษาข้อมูล&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>บริษัทจะเก็บรักษาข้อมูลส่วนบุคคลของท่านไว้เป็นระยะเวลา 2 ปี นับตั้งแต่วันที่ท่านให้ข้อมูล หรือจนกว่าท่านจะมีการร้องขอให้ลบทำลายข้อมูล หรือเพิกถอนความยินยอมตามสิทธิของท่าน&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;&lt;strong&gt;5. สิทธิของเจ้าของข้อมูลส่วนบุคคล&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>ท่านในฐานะเจ้าของข้อมูลมีสิทธิในการดำเนินการตามที่กฎหมายกำหนด ดังต่อไปนี้:&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;สิทธิในการขอเข้าถึงและขอรับสำเนาข้อมูลส่วนบุคคลของท่าน&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;สิทธิในการขอแก้ไขข้อมูลให้ถูกต้อง เป็นปัจจุบัน และสมบูรณ์&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;สิทธิในการขอให้ลบ ทำลาย หรือระงับการใช้ข้อมูลส่วนบุคคล&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;li&gt;สิทธิในการเพิกถอนความยินยอมที่ได้ให้ไว้เมื่อใดก็ได้ โดยติดต่อมายังบริษัทผ่านช่องทางติดต่อที่บริษัทกำหนด&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="form-group" style="display: flex; align-items: flex-start; margin-bottom: 25px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;input type="checkbox" id="pdpaConsent" required onchange="toggleForm()" style="margin-top: 3px; margin-right: 10px; cursor: pointer;"&gt;<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label for="pdpaConsent" style="display:inline; font-weight:normal; font-size: 14px; line-height: 1.5; cursor: pointer;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ *</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;fieldset id="mainFormContent" disabled&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;ธุรกิจของคุณอยู่กลุ่มไหน? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="businessType" required onchange="toggleOtherBusiness()"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกกลุ่มธุรกิจ --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. Retail / E-commerce"&gt;A. Retail / E-commerce&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. บริการ / B2B"&gt;B. บริการ / B2B&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. อสังหา / Luxury"&gt;C. อสังหา / Luxury&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. Healthcare / Beauty"&gt;D. Healthcare / Beauty&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. Education"&gt;E. Education&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="F. Agency / Media"&gt;F. Agency / Media&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="G. Movie / Series Production"&gt;G. Movie / Series Production&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="H. อื่น ๆ"&gt;H. อื่น ๆ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div id="otherBusinessSection" style="display: none; margin-top: 10px;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;input type="text" id="otherBusiness" placeholder="โปรดระบุธุรกิจของคุณ..."&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;เป้าหมายหลักตอนนี้? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="mainGoal" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกเป้าหมาย --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. ให้คนรู้จักแบรนด์"&gt;A. ให้คนรู้จักแบรนด์&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. ได้ Lead / คนทัก / ลงทะเบียน"&gt;B. ได้ Lead / คนทัก / ลงทะเบียน&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. เพิ่มยอดขาย"&gt;C. เพิ่มยอดขาย&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. อยากยิงแอดให้คุ้มขึ้น"&gt;D. อยากยิงแอดให้คุ้มขึ้น&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. คอนเทนต์มีทิศทาง"&gt;E. คอนเทนต์มีทิศทาง&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="F. ใช้ LINE OA ให้มีประสิทธิภาพ"&gt;F. ใช้ LINE OA ให้มีประสิทธิภาพ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;ปัญหาหลักที่เจอ? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="mainProblem" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกปัญหาหลัก --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. ไม่รู้จะเริ่มกลยุทธ์"&gt;A. ไม่รู้จะเริ่มกลยุทธ์&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. คอนเทนต์คนไม่สนใจ"&gt;B. คอนเทนต์คนไม่สนใจ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. ยิงแอดแพง"&gt;C. ยิงแอดแพง&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. คนเห็นเยอะแต่ไม่ทัก"&gt;D. คนเห็นเยอะแต่ไม่ทัก&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. ทักแต่ปิดไม่ได้"&gt;E. ทักแต่ปิดไม่ได้&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="F. LINE ใช้ไม่เต็มที่"&gt;F. LINE ใช้ไม่เต็มที่&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;ตอนนี้ยิงแอดอยู่ไหม? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="runningAds" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกสถานะ --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. ยังไม่เคย"&gt;A. ยังไม่เคย&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. เคยบ้างไม่สม่ำเสมอ"&gt;B. เคยบ้างไม่สม่ำเสมอ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. ยิงทุกเดือน"&gt;C. ยิงทุกเดือน&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. ยิงเยอะแต่ผลไม่นิ่ง"&gt;D. ยิงเยอะแต่ผลไม่นิ่ง&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. มีทีมแต่อยาก Optimize"&gt;E. มีทีมแต่อยาก Optimize&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;มี LINE OA / ระบบเก็บ Lead? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="hasLineOA" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกสถานะ --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. ยังไม่มี"&gt;A. ยังไม่มี&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. มีแต่ตอบแชต"&gt;B. มีแต่ตอบแชต&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. มี + Broadcast"&gt;C. มี + Broadcast&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. มี Tag / Rich Menu / Automation"&gt;D. มี Tag / Rich Menu / Automation&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. มีแล้วอยากพัฒนาต่อ"&gt;E. มีแล้วอยากพัฒนาต่อ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;งบการตลาดต่อเดือน? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="budget" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกงบประมาณ --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. &lt; 30K"&gt;A. &amp;lt; 30K&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. 30–50K"&gt;B. 30–50K&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. 50–100K"&gt;C. 50–100K&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. 100–300K"&gt;D. 100–300K&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. &gt; 300K บาท"&gt;E. &amp;gt; 300K บาท&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="F. ยังไม่แน่ใจ"&gt;F. ยังไม่แน่ใจ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;อยากให้ SPARK ช่วยอะไรสุด? *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;select id="helpNeeded" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="" disabled selected&gt;-- เลือกสิ่งที่คุณต้องการ --&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="A. วางกลยุทธ์"&gt;A. วางกลยุทธ์&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="B. ยิงแอด Meta/Google/LINE"&gt;B. ยิงแอด Meta/Google/LINE&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="C. ทำคอนเทนต์"&gt;C. ทำคอนเทนต์&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="D. LINE OA / Game / Automation"&gt;D. LINE OA / Game / Automation&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="E. Full Funnel"&gt;E. Full Funnel&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;option value="F. วิเคราะห์ก่อน"&gt;F. วิเคราะห์ก่อน&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;ต้องการให้ส่งผลลัพธ์ให้ทาง email หรือไม่ *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="radio-group"&gt;&lt;input type="radio" name="wantEmail" value="ต้องการ" required onchange="toggleContactFields()"&gt; ต้องการ&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="radio-group"&gt;&lt;input type="radio" name="wantEmail" value="ไม่ต้องการ" onchange="toggleContactFields()"&gt; ไม่ต้องการ&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;label&gt;ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="radio-group"&gt;&lt;input type="radio" name="wantContact" value="ต้องการ" required onchange="toggleContactFields()"&gt; ต้องการ&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="radio-group"&gt;&lt;input type="radio" name="wantContact" value="ไม่ต้องการ" onchange="toggleContactFields()"&gt; ไม่ต้องการ&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div id="nameEmailSection" style="display: none;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;label&gt;ชื่อ - นามสกุล *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;input type="text" id="name"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;label&gt;Email Address *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;input type="email" id="email"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div id="phoneSection" style="display: none;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;label&gt;เบอร์โทรติดต่อ *&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>&lt;input type="tel" id="phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;button type="submit" id="btnSubmit"&gt;ส่งข้อมูลเพื่อรับผลประเมิน&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/fieldset&gt; &lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://static.line-scdn.net/liff/edge/2/sdk.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// ตัวแปรสำหรับเก็บ LINE UID</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>let userLineId = "";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// เริ่มการทำงานของ LIFF ทันทีที่โหลดหน้าเว็บ</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>window.onload = function() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// นำ LIFF ID จาก LINE Developers มาใส่ในเครื่องหมายคำพูดนี้</span></p>
+<p class="p3"><span class="s2"><span class="Apple-converted-space">        </span>initializeLiff("</span><span class="s3">2010654750-fC1R7YbU</span><span class="s2">");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function initializeLiff(myLiffId) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>liff.init({ liffId: myLiffId })</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>.then(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (liff.isLoggedIn()) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>// ดึงข้อมูลโปรไฟล์ลูกค้า</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>liff.getProfile().then(profile =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>userLineId = profile.userId; // เก็บ UID ไว้ส่งลง Sheet</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>}).catch(err =&gt; console.error(err));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>// ถ้าเปิดบนเบราว์เซอร์ปกติ จะบังคับให้ล็อกอิน LINE ก่อน</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>liff.login();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>})</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>.catch((err) =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>console.log("LIFF Initialization failed", err);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// ฟังก์ชันสำหรับปลดล็อกฟอร์มเมื่อกดยอมรับ PDPA</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function toggleForm() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const isChecked = document.getElementById('pdpaConsent').checked;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const mainForm = document.getElementById('mainFormContent');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (isChecked) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>mainForm.disabled = false; // ปลดล็อกฟอร์มให้กรอกได้</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>mainForm.disabled = true;<span class="Apple-converted-space">  </span>// ล็อกฟอร์มถ้าเอาติ๊กออก</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// ฟังก์ชันสำหรับเปิด/ปิด ช่องระบุธุรกิจ "อื่นๆ"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function toggleOtherBusiness() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const businessType = document.getElementById('businessType').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const otherSection = document.getElementById('otherBusinessSection');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const otherInput = document.getElementById('otherBusiness');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (businessType === "H. อื่น ๆ") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>otherSection.style.display = "block"; // แสดงช่องกรอก</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>otherInput.required = true; <span class="Apple-converted-space">          </span>// บังคับว่าต้องพิมพ์ข้อความ</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>otherSection.style.display = "none";<span class="Apple-converted-space">  </span>// ซ่อนช่องกรอก</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>otherInput.required = false;<span class="Apple-converted-space">          </span>// ปลดบังคับกรอก</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>otherInput.value = "";<span class="Apple-converted-space">                </span>// เคลียร์ค่าที่พิมพ์ค้างไว้</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// ฟังก์ชันสำหรับประมวลผลเงื่อนไขการแสดงช่องกรอกข้อมูลติดต่อ</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function toggleContactFields() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const emailRadio = document.querySelector('input[name="wantEmail"]:checked');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const contactRadio = document.querySelector('input[name="wantContact"]:checked');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// ดึงค่าว่าลูกค้าเลือกอะไร (ถ้ายังไม่เลือกจะให้เป็นค่าว่าง)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const valEmail = emailRadio ? emailRadio.value : "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const valContact = contactRadio ? contactRadio.value : "";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const nameEmailSection = document.getElementById('nameEmailSection');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const phoneSection = document.getElementById('phoneSection');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const nameInput = document.getElementById('name');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const emailInput = document.getElementById('email');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const phoneInput = document.getElementById('phone');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// เงื่อนไขที่ 1: การแสดงกล่อง "ชื่อ และ อีเมล"<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// (จะแสดงก็ต่อเมื่อ Want Email เป็น "ต้องการ" หรือ Want Contact เป็น "ต้องการ")</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (valEmail === "ต้องการ" || valContact === "ต้องการ") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>nameEmailSection.style.display = "block";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>nameInput.required = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>emailInput.required = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>nameEmailSection.style.display = "none";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>nameInput.required = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>emailInput.required = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>nameInput.value = ""; <span class="Apple-converted-space">  </span>// เคลียร์ข้อมูลทิ้ง</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>emailInput.value = "";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// เงื่อนไขที่ 2: การแสดงกล่อง "เบอร์โทร"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// (จะแสดงก็ต่อเมื่อ Want Contact เป็น "ต้องการ" เท่านั้น)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (valContact === "ต้องการ") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phoneSection.style.display = "block";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phoneInput.required = true;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phoneSection.style.display = "none";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phoneInput.required = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phoneInput.value = "";<span class="Apple-converted-space">  </span>// เคลียร์ข้อมูลทิ้ง</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function sendToGoogle() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const btnSubmit = document.getElementById('btnSubmit');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>btnSubmit.innerText = "กำลังประมวลผล...";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>btnSubmit.disabled = true;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const contactRadio = document.querySelector('input[name="wantContact"]:checked');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const emailRadio = document.querySelector('input[name="wantEmail"]:checked');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// ตรวจสอบข้อมูล "ประเภทธุรกิจ" เพื่อดูว่าเลือก อื่นๆ หรือไม่</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>let finalBusinessType = document.getElementById('businessType').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>if (finalBusinessType === "H. อื่น ๆ") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>finalBusinessType = "อื่น ๆ: " + document.getElementById('otherBusiness').value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// รวบรวมข้อมูลทั้งหมด 13 ตัวแปร + LINE UID</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>var formData = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>email: document.getElementById('email').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>businessType: finalBusinessType,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>mainGoal: document.getElementById('mainGoal').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>mainProblem: document.getElementById('mainProblem').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>runningAds: document.getElementById('runningAds').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>hasLineOA: document.getElementById('hasLineOA').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>budget: document.getElementById('budget').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>helpNeeded: document.getElementById('helpNeeded').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>name: document.getElementById('name').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>phone: document.getElementById('phone').value,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>wantContact: contactRadio ? contactRadio.value : "",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>wantEmail: emailRadio ? emailRadio.value : "",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>pdpaConsent: document.getElementById('pdpaConsent').checked ? "ยินยอม" : "ไม่ยินยอม",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>lineUid: userLineId<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// ส่งข้อมูลไปที่ API ของ Google Apps Script ด้วย fetch</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEx570SZXYzJk2rj3smMplYEv2uiA6MepL0iVKa_0_jlDW7UHwzAc7_VvETvY_aiVdHw/exec";</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>fetch(GOOGLE_SCRIPT_URL, {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>method: "POST",</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>headers: {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>"Content-Type": "text/plain;charset=utf-8"</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>body: JSON.stringify(formData)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.then(response =&gt; response.json())</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.then(data =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>if(data.status === "success") {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>alert(data.message);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>document.getElementById('sparkForm').reset();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">             </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>// ซ่อนส่วนต่างๆ กลับสู่สภาวะเริ่มต้นหลังจากส่ง</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>toggleForm();<span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>toggleOtherBusiness();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>toggleContactFields();</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>// ปิดหน้าต่าง LIFF ทันทีที่ทำเสร็จ</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>if (liff.isInClient()) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">               </span>liff.closeWindow();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">             </span>alert("เกิดปัญหา: " + data.message);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.catch(error =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>alert("เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ต");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.finally(() =&gt; {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>btnSubmit.disabled = false;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
