@@ -36,13 +36,13 @@
         <div class="form-group" style="display: flex; align-items: flex-start; margin-bottom: 25px;">
           <input type="checkbox" id="pdpaConsent" required onchange="toggleForm()" style="margin-top: 3px; margin-right: 10px; cursor: pointer;"> 
           <label for="pdpaConsent" style="display:inline; font-weight:normal; font-size: 14px; line-height: 1.5; cursor: pointer;">
-            ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ *
+            ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ <span style="color: red;">*</span>
           </label>
         </div>
         <fieldset id="mainFormContent" disabled>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
           <div class="form-group">
-            <label>ธุรกิจของคุณอยู่กลุ่มไหน? *</label>
+            <label>ธุรกิจของคุณอยู่กลุ่มไหน? <span style="color: red;">*</span></label>
             <select id="businessType" required onchange="toggleOtherBusiness()">
               <option value="" disabled selected>-- เลือกกลุ่มธุรกิจ --</option>
               <option value="A. Retail / E-commerce">A. Retail / E-commerce</option>
@@ -59,7 +59,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label>เป้าหมายหลักตอนนี้? *</label>
+            <label>เป้าหมายหลักตอนนี้? <span style="color: red;">*</span></label>
             <select id="mainGoal" required>
               <option value="" disabled selected>-- เลือกเป้าหมาย --</option>
               <option value="A. ให้คนรู้จักแบรนด์">A. ให้คนรู้จักแบรนด์</option>
@@ -71,7 +71,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>ปัญหาหลักที่เจอ? *</label>
+            <label>ปัญหาหลักที่เจอ? <span style="color: red;">*</span></label>
             <select id="mainProblem" required>
               <option value="" disabled selected>-- เลือกปัญหาหลัก --</option>
               <option value="A. ไม่รู้จะเริ่มกลยุทธ์">A. ไม่รู้จะเริ่มกลยุทธ์</option>
@@ -83,7 +83,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>ตอนนี้ยิงแอดอยู่ไหม? *</label>
+            <label>ตอนนี้ยิงแอดอยู่ไหม? <span style="color: red;">*</span></label>
             <select id="runningAds" required>
               <option value="" disabled selected>-- เลือกสถานะ --</option>
               <option value="A. ยังไม่เคย">A. ยังไม่เคย</option>
@@ -94,7 +94,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>มี LINE OA / ระบบเก็บ Lead? *</label>
+            <label>มี LINE OA / ระบบเก็บ Lead? <span style="color: red;">*</span></label>
             <select id="hasLineOA" required>
               <option value="" disabled selected>-- เลือกสถานะ --</option>
               <option value="A. ยังไม่มี">A. ยังไม่มี</option>
@@ -105,7 +105,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>งบการตลาดต่อเดือน? *</label>
+            <label>งบการตลาดต่อเดือน? <span style="color: red;">*</span></label>
             <select id="budget" required>
               <option value="" disabled selected>-- เลือกงบประมาณ --</option>
               <option value="A. < 30K">A. &lt; 30K</option>
@@ -117,7 +117,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>อยากให้ SPARK ช่วยอะไรสุด? *</label>
+            <label>อยากให้ SPARK ช่วยอะไรสุด? <span style="color: red;">*</span></label>
             <select id="helpNeeded" required>
               <option value="" disabled selected>-- เลือกสิ่งที่คุณต้องการ --</option>
               <option value="A. วางกลยุทธ์">A. วางกลยุทธ์</option>
@@ -130,28 +130,21 @@
           </div>
           <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
           <div class="form-group">
-            <label>ต้องการให้ส่งผลลัพธ์ให้ทาง email หรือไม่ *</label>
-            <div class="radio-group"><input type="radio" name="wantEmail" value="ต้องการ" required onchange="toggleContactFields()"> ต้องการ</div>
-            <div class="radio-group"><input type="radio" name="wantEmail" value="ไม่ต้องการ" onchange="toggleContactFields()"> ไม่ต้องการ</div>
-          </div>
-          <div class="form-group">
-            <label>ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ *</label>
+            <label>ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span style="color: red;">*</span></label>
             <div class="radio-group"><input type="radio" name="wantContact" value="ต้องการ" required onchange="toggleContactFields()"> ต้องการ</div>
             <div class="radio-group"><input type="radio" name="wantContact" value="ไม่ต้องการ" onchange="toggleContactFields()"> ไม่ต้องการ</div>
           </div>
-          <div id="nameEmailSection" style="display: none;">
+          <div id="contactSection" style="display: none;">
             <div class="form-group">
-              <label>ชื่อ - นามสกุล *</label>
+              <label>ชื่อ - นามสกุล <span style="color: red;">*</span></label>
               <input type="text" id="name">
             </div>
             <div class="form-group">
-              <label>Email Address *</label>
+              <label>Email Address <span style="color: red;">*</span></label>
               <input type="email" id="email">
             </div>
-          </div>
-          <div id="phoneSection" style="display: none;">
             <div class="form-group">
-              <label>เบอร์โทรติดต่อ *</label>
+              <label>เบอร์โทรติดต่อ <span style="color: red;">*</span></label>
               <input type="tel" id="phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
             </div>
           </div>
@@ -187,25 +180,26 @@
         }
       }
       function toggleContactFields() {
-        const emailRadio = document.querySelector('input[name="wantEmail"]:checked');
         const contactRadio = document.querySelector('input[name="wantContact"]:checked');
-        const valEmail = emailRadio ? emailRadio.value : "";
         const valContact = contactRadio ? contactRadio.value : "";
-        const nameEmailSection = document.getElementById('nameEmailSection');
-        const phoneSection = document.getElementById('phoneSection');
+        const contactSection = document.getElementById('contactSection');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const phoneInput = document.getElementById('phone');
 
-        if (valEmail === "ต้องการ" || valContact === "ต้องการ") {
-          nameEmailSection.style.display = "block"; nameInput.required = true; emailInput.required = true;
-        } else {
-          nameEmailSection.style.display = "none"; nameInput.required = false; emailInput.required = false; nameInput.value = ""; emailInput.value = "";
-        }
         if (valContact === "ต้องการ") {
-          phoneSection.style.display = "block"; phoneInput.required = true;
+          contactSection.style.display = "block"; 
+          nameInput.required = true; 
+          emailInput.required = true;
+          phoneInput.required = true;
         } else {
-          phoneSection.style.display = "none"; phoneInput.required = false; phoneInput.value = "";
+          contactSection.style.display = "none"; 
+          nameInput.required = false; 
+          emailInput.required = false; 
+          phoneInput.required = false;
+          nameInput.value = ""; 
+          emailInput.value = "";
+          phoneInput.value = "";
         }
       }
       function sendToGoogle() {
@@ -214,7 +208,6 @@
         btnSubmit.disabled = true;
         
         const contactRadio = document.querySelector('input[name="wantContact"]:checked');
-        const emailRadio = document.querySelector('input[name="wantEmail"]:checked');
 
         let finalBusinessType = document.getElementById('businessType').value;
         if (finalBusinessType === "H. อื่น ๆ") {
@@ -233,7 +226,7 @@
           name: document.getElementById('name').value,
           phone: document.getElementById('phone').value,
           wantContact: contactRadio ? contactRadio.value : "",
-          wantEmail: emailRadio ? emailRadio.value : "",
+          wantEmail: "", // กำหนดค่าว่างไว้เพื่อให้โครงสร้าง Column ใน Google Sheets ไม่คลาดเคลื่อน
           pdpaConsent: document.getElementById('pdpaConsent').checked ? "ยินยอม" : "ไม่ยินยอม",
           lineUid: userLineId 
         };
@@ -248,7 +241,6 @@
         .then(response => response.json())
         .then(data => {
           if(data.status === "success") {
-             // 🎯 ส่วนที่แก้ไข: ลบ alert ดำๆ ออก แล้วเปลี่ยนดีไซน์กล่องเป็นหน้าขอบคุณทันที
              const container = document.querySelector('.form-container');
              container.innerHTML = `
                <div style="text-align: center; padding: 40px 10px;">
@@ -263,17 +255,13 @@
                </div>
              `;
 
-             // ตั้งค่าให้ปุ่มทำงานเมื่อลูกค้าคลิก
              document.getElementById('btnGoToLine').onclick = function() {
-               // เปลี่ยนลิงก์ด้านล่างนี้ให้เป็น ลิงก์ LINE OA ของ SPARK นะครับ
                const lineOaUrl = "https://lin.ee/nJuryyo"; 
                
                if (liff.isInClient()) {
-                 // ถ้าเปิดในแอป LINE ให้เด้งไปที่ LINE OA นั้น แล้วปิดหน้าต่างลงทันที
                  window.location.href = lineOaUrl;
                  setTimeout(() => { liff.closeWindow(); }, 500);
                } else {
-                 // ถ้าเปิดบนเบราว์เซอร์ปกติ ให้เปิดแท็บใหม่ไปที่ LINE OA
                  window.open(lineOaUrl, '_blank');
                }
              };
