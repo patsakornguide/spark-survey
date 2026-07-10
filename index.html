@@ -2,390 +2,472 @@
 <html lang="th">
   <head>
     <base target="_top">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- นำเข้า Google Font "Prompt" -->
+    <title>SPARK Growth Arcade - แบบประเมินธุรกิจ</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#007BFF",
+              "primary-dark": "#0056b3",
+              "primary-light": "#F8FBFF",
+              "border-blue": "#D6E7FF",
+              "text-dark": "#101828",
+              "text-gray": "#667085",
+              danger: "#FF3B30",
+              success: "#10b981",
+              line: "#06C755",
+            },
+            fontFamily: {
+              sans: ["Prompt", "sans-serif"],
+            },
+            boxShadow: {
+              card: "0 10px 40px rgba(0, 123, 255, 0.10)",
+              "card-lg": "0 20px 60px rgba(0, 123, 255, 0.16)",
+            },
+          },
+        },
+      };
+    </script>
+
     <style>
-      /* กำหนดตัวแปรสี CI ของ SPARK */
-      :root {
-        --primary-blue: #007BFF;
-        --dark-blue: #0056b3;
-        --light-blue-bg: #F8FBFF;
-        --border-blue: #D6E7FF;
-        --text-dark: #101828;
-        --text-gray: #667085;
-        --white: #FFFFFF;
-        --danger-red: #FF3B30;
+      body { font-family: 'Prompt', sans-serif; }
+
+      /* PDPA scrollbar */
+      .pdpa-scrollbar::-webkit-scrollbar { width: 6px; }
+      .pdpa-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .pdpa-scrollbar::-webkit-scrollbar-thumb { background: #B8C2CC; border-radius: 10px; }
+
+      /* Focus glow */
+      .input-glow:focus {
+        outline: none;
+        border-color: #007BFF;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
       }
 
-      body { 
-        font-family: 'Prompt', sans-serif; 
-        background: linear-gradient(135deg, #e6f0ff 0%, #f0f2f5 100%); 
-        padding: 20px; 
-        color: var(--text-dark); 
-        margin: 0;
-        min-height: 100vh;
-      }
-
-      .form-container { 
-        background-color: var(--white); 
-        max-width: 650px; 
-        margin: 0 auto; 
-        padding: 40px 30px; 
-        border-radius: 24px; 
-        box-shadow: 0 10px 40px rgba(0, 123, 255, 0.08); 
-        border: 1px solid var(--border-blue);
-      }
-
-      .header-section {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
-      h2 { 
-        color: var(--primary-blue); 
-        margin-bottom: 5px; 
-        font-weight: 700;
-        font-size: 28px;
-        letter-spacing: -0.5px;
-      }
-
-      p.subtitle { 
-        color: var(--text-gray); 
-        font-size: 15px; 
-        margin-top: 0;
-        font-weight: 300;
-      }
-
-      .form-group { 
-        margin-bottom: 24px; 
-      }
-
-      label { 
-        display: block; 
-        font-weight: 500; 
-        margin-bottom: 10px; 
-        font-size: 15px; 
-        color: var(--text-dark);
-      }
-
-      .required-asterisk {
-        color: var(--danger-red);
-      }
-
-      /* ตกแต่ง Input และ Select */
-      input[type="text"], 
-      input[type="email"], 
-      input[type="tel"], 
-      select { 
-        width: 100%; 
-        padding: 14px 16px; 
-        border: 1.5px solid var(--border-blue); 
-        border-radius: 12px; 
-        box-sizing: border-box; 
-        font-size: 15px; 
-        font-family: 'Prompt', sans-serif;
-        background-color: var(--light-blue-bg);
-        color: var(--text-dark);
-        transition: all 0.3s ease;
+      /* Custom select arrow */
+      select.input-glow {
         appearance: none;
-      }
-
-      /* Custom Arrow สำหรับ Select */
-      select {
+        -webkit-appearance: none;
         background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007BFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
         background-repeat: no-repeat;
         background-position: right 16px top 50%;
         background-size: 12px auto;
       }
 
-      input:focus, select:focus {
-        outline: none;
-        border-color: var(--primary-blue);
-        background-color: var(--white);
-        box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
-      }
-
-      .radio-group { 
-        margin-bottom: 12px; 
-        font-size: 15px; 
-        display: flex;
-        align-items: center;
-        color: var(--text-dark);
-      }
-
-      /* ตกแต่ง Radio & Checkbox */
-      input[type="radio"], input[type="checkbox"] {
-        accent-color: var(--primary-blue);
-        width: 18px;
-        height: 18px;
-        margin-right: 10px;
+      /* Radio donut style */
+      input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #D6E7FF;
+        border-radius: 50%;
+        background-color: white;
+        display: inline-block;
+        position: relative;
         cursor: pointer;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+      input[type="radio"]:checked { border-color: #007BFF; }
+      input[type="radio"]:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background-color: #007BFF;
       }
 
-      .pdpa-box { 
-        background-color: var(--light-blue-bg); 
-        border: 1.5px solid var(--border-blue); 
-        padding: 20px; 
-        border-radius: 16px; 
-        font-size: 13px; 
-        color: var(--text-gray); 
-        margin-bottom: 15px; 
-        line-height: 1.7; 
-        height: 220px; 
-        overflow-y: auto; 
+      /* Checkbox */
+      input[type="checkbox"] { accent-color: #007BFF; cursor: pointer; }
+
+      /* Primary button gradient */
+      .btn-gradient {
+        background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
       }
-
-      .pdpa-box h4 {
-        margin-top: 0; 
-        text-align: center; 
-        color: var(--primary-blue); 
-        font-size: 15px;
-        margin-bottom: 15px;
-      }
-
-      /* สไตล์ของ Scrollbar ภายใน PDPA */
-      .pdpa-box::-webkit-scrollbar { width: 6px; }
-      .pdpa-box::-webkit-scrollbar-track { background: transparent; }
-      .pdpa-box::-webkit-scrollbar-thumb { background: #B8C2CC; border-radius: 10px; }
-
-      hr.divider {
-        border: 0; 
-        border-top: 1.5px dashed var(--border-blue); 
-        margin: 30px 0;
-      }
-
-      button { 
-        width: 100%; 
-        padding: 16px; 
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-        color: white; 
-        border: none; 
-        font-size: 16px; 
-        font-weight: 600; 
-        font-family: 'Prompt', sans-serif;
-        border-radius: 12px; 
-        cursor: pointer; 
-        transition: all 0.3s ease; 
-        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-        margin-top: 10px;
-      }
-
-      button:hover { 
+      .btn-gradient:hover:not(:disabled) {
+        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3); 
       }
-
-      button:disabled { 
-        background: #B8C2CC; 
+      .btn-gradient:disabled {
+        background: #B8C2CC;
         box-shadow: none;
-        cursor: not-allowed; 
-        transform: none;
+        cursor: not-allowed;
       }
 
-      fieldset { 
-        border: none; 
-        padding: 0; 
-        margin: 0; 
-        transition: opacity 0.4s ease; 
+      .btn-outline:hover {
+        background-color: #F8FBFF;
       }
 
-      fieldset:disabled { 
-        opacity: 0.35; 
-        pointer-events: none; 
+      @keyframes popIn {
+        0% { transform: scale(0); opacity: 0; }
+        80% { transform: scale(1.1); }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      .animate-pop-in { animation: popIn 0.5s ease-out; }
+
+      /* Step fade-in */
+      .form-step { animation: stepIn 0.35s ease; }
+      @keyframes stepIn {
+        from { opacity: 0; transform: translateX(8px); }
+        to { opacity: 1; transform: translateX(0); }
       }
     </style>
   </head>
-  <body>
-    <div class="form-container">
-      <div class="header-section">
-        <h2>✦ SPARK Growth Arcade</h2>
-        <p class="subtitle">แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ</p>
+  <body class="bg-gradient-to-br from-[#e6f0ff] to-[#f0f2f5] min-h-screen flex items-center justify-center p-4 antialiased">
+    <div class="form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg">
+
+      <!-- Header -->
+      <div class="bg-primary-light p-8 text-center border-b border-border-blue relative overflow-hidden">
+        <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 100% 0%, #D6E7FF 0%, transparent 55%);"></div>
+        <h2 class="relative z-10 text-primary font-bold text-[26px] sm:text-[28px] tracking-tight mb-1">✦ SPARK Growth Arcade</h2>
+        <p class="relative z-10 text-text-gray text-[15px]">แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ</p>
       </div>
 
-      <form id="sparkForm" onsubmit="event.preventDefault(); sendToGoogle();">
-        
-        <label>นโยบายความเป็นส่วนตัว (PDPA Consent Form)</label>
-        <div class="pdpa-box">
-          <h4>หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล (Consent Form)</h4>
-          <p style="margin-top: 0;"><strong>บริษัท สปาร์ค แฟคเทอร์ จำกัด ("บริษัท")</strong> ให้ความสำคัญอย่างยิ่งยวดกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน บริษัทจึงจัดทำเอกสารฉบับนี้ขึ้นเพื่อขอความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</p>
-          
-          <p><strong>1. ข้อมูลส่วนบุคคลที่บริษัทเก็บรวบรวม</strong><br>บริษัทมีความจำเป็นต้องเก็บรวบรวมข้อมูลส่วนบุคคลของท่านที่ได้ให้ไว้ผ่านแบบสอบถามนี้ ได้แก่ ชื่อ-นามสกุล, หมายเลขโทรศัพท์, ที่อยู่อีเมล, ข้อมูลโครงสร้างธุรกิจ ปัญหา และเป้าหมายทางการตลาด</p>
-          
-          <p><strong>2. วัตถุประสงค์ในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูล (📌 เรานำข้อมูลของคุณไปทำอะไรบ้าง?)</strong></p>
-          <ul style="margin-top: 5px; padding-left: 20px;">
-            <li><strong>ประมวลผลและติดต่อกลับ:</strong> เพื่อจัดส่งผลลัพธ์ผ่านทางอีเมล และให้เจ้าหน้าที่ติดต่อกลับเพื่อนำเสนอข้อมูล ให้คำปรึกษา แนะนำสินค้า/บริการที่ตอบโจทย์ธุรกิจของคุณ</li>
-            <li><strong>อัปเดตข่าวสารและโปรโมชั่น:</strong> เพื่อส่งข้อมูลสิทธิประโยชน์ กิจกรรม หรือข้อเสนอทางการตลาดเป็นครั้งคราว</li>
-            <li><strong>พัฒนาโฆษณาให้ตรงใจ:</strong> นำข้อมูลไปใช้สร้างกลุ่มเป้าหมายสำหรับการโฆษณาออนไลน์ (เช่น Meta, Google, TikTok) เพื่อแสดงผลเฉพาะสิ่งที่คุณน่าจะสนใจ</li>
-            <li><strong>ทำงานร่วมกับพันธมิตร:</strong> อาจมีการเปิดเผยข้อมูลเฉพาะเท่าที่จำเป็น ให้แก่แบรนด์ ลูกค้า หรือผู้ว่าจ้างที่เกี่ยวข้องกับแคมเปญนี้ เพื่อประโยชน์ในการให้บริการและนำเสนอผลิตภัณฑ์แก่คุณ</li>
-          </ul>
+      <div class="p-6 sm:p-8">
 
-          <p><strong>3. 🔒 การดูแลความปลอดภัยและสิทธิของคุณ</strong><br>
-          บริษัทจะเก็บรักษาข้อมูลของคุณอย่างปลอดภัยเป็นระยะเวลา ไม่เกิน 2 ปี<br>
-          คุณมีสิทธิตามกฎหมาย (PDPA) ทุกประการ ในการขอเข้าถึง แก้ไข ขอให้ลบข้อมูล หรือ ขอยกเลิก/ถอนความยินยอมได้ทุกเมื่อ ผ่านช่องทางติดต่อของบริษัท</p>
-          
-          <p style="font-size: 12px; color: #888; margin-top: 20px;">
-            <em>(การกดปุ่มด้านล่าง ถือว่าท่านได้อ่าน ทำความเข้าใจ และยินยอมให้บริษัทดำเนินการตามวัตถุประสงค์ข้างต้นด้วยความสมัครใจ)</em>
-          </p>
+        <!-- Progress -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <span id="stepLabel" class="text-[13px] font-medium text-primary">ขั้นตอน 1 จาก 6</span>
+            <span id="stepPercent" class="text-[13px] text-text-gray">17%</span>
+          </div>
+          <div class="w-full h-2 bg-primary-light rounded-full overflow-hidden">
+            <div id="progressBar" class="h-full bg-primary transition-all duration-300" style="width: 17%;"></div>
+          </div>
         </div>
 
-        <div class="form-group" style="display: flex; align-items: flex-start; margin-bottom: 30px; background: var(--light-blue-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--border-blue);">
-          <input type="checkbox" id="pdpaConsent" required onchange="toggleForm()" style="margin-top: 2px;"> 
-          <label for="pdpaConsent" style="display:inline; font-weight:400; font-size: 14px; line-height: 1.5; cursor: pointer; margin-bottom: 0;">
-            ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ <span class="required-asterisk">*</span>
-          </label>
-        </div>
+        <form id="sparkForm" onsubmit="event.preventDefault(); if (currentStep === TOTAL_STEPS) { sendToGoogle(); }">
 
-        <fieldset id="mainFormContent" disabled>
-          
-          <div class="form-group">
-            <label>ธุรกิจของคุณอยู่กลุ่มไหน? <span class="required-asterisk">*</span></label>
-            <select id="businessType" required onchange="toggleOtherBusiness()">
-              <option value="" disabled selected>-- เลือกกลุ่มธุรกิจ --</option>
-              <option value="A. Retail / E-commerce">A. Retail / E-commerce</option>
-              <option value="B. บริการ / B2B">B. บริการ / B2B</option>
-              <option value="C. อสังหา / Luxury">C. อสังหา / Luxury</option>
-              <option value="D. Healthcare / Beauty">D. Healthcare / Beauty</option>
-              <option value="E. Education">E. Education</option>
-              <option value="F. Agency / Media">F. Agency / Media</option>
-              <option value="G. Movie / Series Production">G. Movie / Series Production</option>
-              <option value="H. อื่น ๆ">H. อื่น ๆ</option>
-            </select>
-            <div id="otherBusinessSection" style="display: none; margin-top: 12px;">
-              <input type="text" id="otherBusiness" placeholder="โปรดระบุธุรกิจของคุณ...">
+          <!-- STEP 1: PDPA Consent -->
+          <div class="form-step" data-step="1">
+            <label class="block font-medium text-[15px] text-text-dark mb-2">นโยบายความเป็นส่วนตัว (PDPA Consent Form)</label>
+            <div class="bg-primary-light border border-border-blue rounded-2xl p-5">
+              <h3 class="flex items-center justify-center gap-2 text-primary font-medium text-[15px] mb-3">
+                <span class="material-symbols-outlined text-[18px]">shield_person</span>
+                หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล
+              </h3>
+              <div class="h-[220px] overflow-y-auto pdpa-scrollbar bg-white rounded-xl p-4 text-[13px] leading-[1.7] text-text-gray border border-border-blue/60">
+                <p class="mt-0"><strong>บริษัท สปาร์ค แฟคเทอร์ จำกัด ("บริษัท")</strong> ให้ความสำคัญอย่างยิ่งยวดกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน บริษัทจึงจัดทำเอกสารฉบับนี้ขึ้นเพื่อขอความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</p>
+
+                <p class="mt-3"><strong>1. ข้อมูลส่วนบุคคลที่บริษัทเก็บรวบรวม</strong><br>บริษัทมีความจำเป็นต้องเก็บรวบรวมข้อมูลส่วนบุคคลของท่านที่ได้ให้ไว้ผ่านแบบสอบถามนี้ ได้แก่ ชื่อ-นามสกุล, หมายเลขโทรศัพท์, ที่อยู่อีเมล, ข้อมูลโครงสร้างธุรกิจ ปัญหา และเป้าหมายทางการตลาด</p>
+
+                <p class="mt-3"><strong>2. วัตถุประสงค์ในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูล (📌 เรานำข้อมูลของคุณไปทำอะไรบ้าง?)</strong></p>
+                <ul class="list-disc pl-5 mt-1 space-y-1">
+                  <li><strong>ประมวลผลและติดต่อกลับ:</strong> เพื่อจัดส่งผลลัพธ์ผ่านทางอีเมล และให้เจ้าหน้าที่ติดต่อกลับเพื่อนำเสนอข้อมูล ให้คำปรึกษา แนะนำสินค้า/บริการที่ตอบโจทย์ธุรกิจของคุณ</li>
+                  <li><strong>อัปเดตข่าวสารและโปรโมชั่น:</strong> เพื่อส่งข้อมูลสิทธิประโยชน์ กิจกรรม หรือข้อเสนอทางการตลาดเป็นครั้งคราว</li>
+                  <li><strong>พัฒนาโฆษณาให้ตรงใจ:</strong> นำข้อมูลไปใช้สร้างกลุ่มเป้าหมายสำหรับการโฆษณาออนไลน์ (เช่น Meta, Google, TikTok) เพื่อแสดงผลเฉพาะสิ่งที่คุณน่าจะสนใจ</li>
+                  <li><strong>ทำงานร่วมกับพันธมิตร:</strong> อาจมีการเปิดเผยข้อมูลเฉพาะเท่าที่จำเป็น ให้แก่แบรนด์ ลูกค้า หรือผู้ว่าจ้างที่เกี่ยวข้องกับแคมเปญนี้ เพื่อประโยชน์ในการให้บริการและนำเสนอผลิตภัณฑ์แก่คุณ</li>
+                </ul>
+
+                <p class="mt-3"><strong>3. 🔒 การดูแลความปลอดภัยและสิทธิของคุณ</strong><br>
+                บริษัทจะเก็บรักษาข้อมูลของคุณอย่างปลอดภัยเป็นระยะเวลา ไม่เกิน 2 ปี<br>
+                คุณมีสิทธิตามกฎหมาย (PDPA) ทุกประการ ในการขอเข้าถึง แก้ไข ขอให้ลบข้อมูล หรือ ขอยกเลิก/ถอนความยินยอมได้ทุกเมื่อ ผ่านช่องทางติดต่อของบริษัท</p>
+
+                <p class="text-[12px] text-[#888] mt-4">
+                  <em>(การกดปุ่มด้านล่าง ถือว่าท่านได้อ่าน ทำความเข้าใจ และยินยอมให้บริษัทดำเนินการตามวัตถุประสงค์ข้างต้นด้วยความสมัครใจ)</em>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 mt-4 bg-primary-light p-4 rounded-xl border border-border-blue">
+              <input type="checkbox" id="pdpaConsent" required class="w-5 h-5 mt-0.5">
+              <label for="pdpaConsent" class="text-[14px] leading-[1.5] text-text-dark cursor-pointer">
+                ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ <span class="text-danger">*</span>
+              </label>
             </div>
           </div>
 
-          <div class="form-group">
-            <label>เป้าหมายหลักตอนนี้? <span class="required-asterisk">*</span></label>
-            <select id="mainGoal" required>
-              <option value="" disabled selected>-- เลือกเป้าหมาย --</option>
-              <option value="A. ให้คนรู้จักแบรนด์">A. ให้คนรู้จักแบรนด์</option>
-              <option value="B. ได้ Lead / คนทัก / ลงทะเบียน">B. ได้ Lead / คนทัก / ลงทะเบียน</option>
-              <option value="C. เพิ่มยอดขาย">C. เพิ่มยอดขาย</option>
-              <option value="D. อยากยิงแอดให้คุ้มขึ้น">D. อยากยิงแอดให้คุ้มขึ้น</option>
-              <option value="E. คอนเทนต์มีทิศทาง">E. คอนเทนต์มีทิศทาง</option>
-              <option value="F. ใช้ LINE OA ให้มีประสิทธิภาพ">F. ใช้ LINE OA ให้มีประสิทธิภาพ</option>
-            </select>
-          </div>
+          <!-- STEP 2: Business Type -->
+          <div class="form-step hidden" data-step="2">
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1">ธุรกิจของคุณ</h3>
+            <p class="text-[13px] text-text-gray mb-4">บอกเราคร่าวๆ ว่าธุรกิจของคุณอยู่กลุ่มไหน</p>
 
-          <div class="form-group">
-            <label>ปัญหาหลักที่เจอ? <span class="required-asterisk">*</span></label>
-            <select id="mainProblem" required>
-              <option value="" disabled selected>-- เลือกปัญหาหลัก --</option>
-              <option value="A. ไม่รู้จะเริ่มกลยุทธ์">A. ไม่รู้จะเริ่มกลยุทธ์</option>
-              <option value="B. คอนเทนต์คนไม่สนใจ">B. คอนเทนต์คนไม่สนใจ</option>
-              <option value="C. ยิงแอดแพง">C. ยิงแอดแพง</option>
-              <option value="D. คนเห็นเยอะแต่ไม่ทัก">D. คนเห็นเยอะแต่ไม่ทัก</option>
-              <option value="E. ทักแต่ปิดไม่ได้">E. ทักแต่ปิดไม่ได้</option>
-              <option value="F. LINE ใช้ไม่เต็มที่">F. LINE ใช้ไม่เต็มที่</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>ตอนนี้ยิงแอดอยู่ไหม? <span class="required-asterisk">*</span></label>
-            <select id="runningAds" required>
-              <option value="" disabled selected>-- เลือกสถานะ --</option>
-              <option value="A. ยังไม่เคย">A. ยังไม่เคย</option>
-              <option value="B. เคยบ้างไม่สม่ำเสมอ">B. เคยบ้างไม่สม่ำเสมอ</option>
-              <option value="C. ยิงทุกเดือน">C. ยิงทุกเดือน</option>
-              <option value="D. ยิงเยอะแต่ผลไม่นิ่ง">D. ยิงเยอะแต่ผลไม่นิ่ง</option>
-              <option value="E. มีทีมแต่อยาก Optimize">E. มีทีมแต่อยาก Optimize</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>มี LINE OA / ระบบเก็บ Lead? <span class="required-asterisk">*</span></label>
-            <select id="hasLineOA" required>
-              <option value="" disabled selected>-- เลือกสถานะ --</option>
-              <option value="A. ยังไม่มี">A. ยังไม่มี</option>
-              <option value="B. มีแต่ตอบแชต">B. มีแต่ตอบแชต</option>
-              <option value="C. มี + Broadcast">C. มี + Broadcast</option>
-              <option value="D. มี Tag / Rich Menu / Automation">D. มี Tag / Rich Menu / Automation</option>
-              <option value="E. มีแล้วอยากพัฒนาต่อ">E. มีแล้วอยากพัฒนาต่อ</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>งบการตลาดต่อเดือน? <span class="required-asterisk">*</span></label>
-            <select id="budget" required>
-              <option value="" disabled selected>-- เลือกงบประมาณ --</option>
-              <option value="A. < 30K">A. &lt; 30K</option>
-              <option value="B. 30–50K">B. 30–50K</option>
-              <option value="C. 50–100K">C. 50–100K</option>
-              <option value="D. 100–300K">D. 100–300K</option>
-              <option value="E. > 300K บาท">E. &gt; 300K บาท</option>
-              <option value="F. ยังไม่แน่ใจ">F. ยังไม่แน่ใจ</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>อยากให้ SPARK ช่วยอะไรสุด? <span class="required-asterisk">*</span></label>
-            <select id="helpNeeded" required>
-              <option value="" disabled selected>-- เลือกสิ่งที่คุณต้องการ --</option>
-              <option value="A. วางกลยุทธ์">A. วางกลยุทธ์</option>
-              <option value="B. ยิงแอด Meta/Google/LINE">B. ยิงแอด Meta/Google/LINE</option>
-              <option value="C. ทำคอนเทนต์">C. ทำคอนเทนต์</option>
-              <option value="D. LINE OA / Game / Automation">D. LINE OA / Game / Automation</option>
-              <option value="E. Full Funnel">E. Full Funnel</option>
-              <option value="F. วิเคราะห์ก่อน">F. วิเคราะห์ก่อน</option>
-            </select>
-          </div>
-
-          <hr class="divider">
-
-          <div class="form-group">
-            <label>ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span class="required-asterisk">*</span></label>
-            <div class="radio-group">
-              <input type="radio" name="wantContact" id="contactYes" value="ต้องการ" required onchange="toggleContactFields()"> 
-              <label for="contactYes" style="margin:0; font-weight:400; cursor:pointer;">ต้องการ</label>
-            </div>
-            <div class="radio-group">
-              <input type="radio" name="wantContact" id="contactNo" value="ไม่ต้องการ" onchange="toggleContactFields()"> 
-              <label for="contactNo" style="margin:0; font-weight:400; cursor:pointer;">ไม่ต้องการ</label>
+            <div class="space-y-2">
+              <label class="block font-medium text-[15px] text-text-dark">ธุรกิจของคุณอยู่กลุ่มไหน? <span class="text-danger">*</span></label>
+              <select id="businessType" required onchange="toggleOtherBusiness()"
+                class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                <option value="" disabled selected>-- เลือกกลุ่มธุรกิจ --</option>
+                <option value="A. Retail / E-commerce">A. Retail / E-commerce</option>
+                <option value="B. บริการ / B2B">B. บริการ / B2B</option>
+                <option value="C. อสังหา / Luxury">C. อสังหา / Luxury</option>
+                <option value="D. Healthcare / Beauty">D. Healthcare / Beauty</option>
+                <option value="E. Education">E. Education</option>
+                <option value="F. Agency / Media">F. Agency / Media</option>
+                <option value="G. Movie / Series Production">G. Movie / Series Production</option>
+                <option value="H. อื่น ๆ">H. อื่น ๆ</option>
+              </select>
+              <div id="otherBusinessSection" class="hidden pl-4 border-l-2 border-primary mt-2">
+                <input type="text" id="otherBusiness" placeholder="โปรดระบุธุรกิจของคุณ..."
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3 px-4 text-[15px] text-text-dark transition-all">
+              </div>
             </div>
           </div>
 
-          <div id="contactSection" style="display: none; background: var(--light-blue-bg); padding: 20px; border-radius: 16px; border: 1px solid var(--border-blue); margin-bottom: 24px;">
-            <div class="form-group">
-              <label>ชื่อ - นามสกุล <span class="required-asterisk">*</span></label>
-              <input type="text" id="name" placeholder="ระบุชื่อและนามสกุล">
-            </div>
-            <div class="form-group">
-              <label>Email Address <span class="required-asterisk">*</span></label>
-              <input type="email" id="email" placeholder="example@email.com">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-              <label>เบอร์โทรติดต่อ <span class="required-asterisk">*</span></label>
-              <input type="tel" id="phone" maxlength="10" placeholder="08xxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+          <!-- STEP 3: Goal & Problem -->
+          <div class="form-step hidden" data-step="3">
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1">เป้าหมาย & ปัญหา</h3>
+            <p class="text-[13px] text-text-gray mb-4">สิ่งที่คุณอยากได้ และสิ่งที่ติดขัดอยู่ตอนนี้</p>
+
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">เป้าหมายหลักตอนนี้? <span class="text-danger">*</span></label>
+                <select id="mainGoal" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกเป้าหมาย --</option>
+                  <option value="A. ให้คนรู้จักแบรนด์">A. ให้คนรู้จักแบรนด์</option>
+                  <option value="B. ได้ Lead / คนทัก / ลงทะเบียน">B. ได้ Lead / คนทัก / ลงทะเบียน</option>
+                  <option value="C. เพิ่มยอดขาย">C. เพิ่มยอดขาย</option>
+                  <option value="D. อยากยิงแอดให้คุ้มขึ้น">D. อยากยิงแอดให้คุ้มขึ้น</option>
+                  <option value="E. คอนเทนต์มีทิศทาง">E. คอนเทนต์มีทิศทาง</option>
+                  <option value="F. ใช้ LINE OA ให้มีประสิทธิภาพ">F. ใช้ LINE OA ให้มีประสิทธิภาพ</option>
+                </select>
+              </div>
+
+              <div class="h-px bg-border-blue"></div>
+
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">ปัญหาหลักที่เจอ? <span class="text-danger">*</span></label>
+                <select id="mainProblem" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกปัญหาหลัก --</option>
+                  <option value="A. ไม่รู้จะเริ่มกลยุทธ์">A. ไม่รู้จะเริ่มกลยุทธ์</option>
+                  <option value="B. คอนเทนต์คนไม่สนใจ">B. คอนเทนต์คนไม่สนใจ</option>
+                  <option value="C. ยิงแอดแพง">C. ยิงแอดแพง</option>
+                  <option value="D. คนเห็นเยอะแต่ไม่ทัก">D. คนเห็นเยอะแต่ไม่ทัก</option>
+                  <option value="E. ทักแต่ปิดไม่ได้">E. ทักแต่ปิดไม่ได้</option>
+                  <option value="F. LINE ใช้ไม่เต็มที่">F. LINE ใช้ไม่เต็มที่</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <button type="submit" id="btnSubmit">ส่งข้อมูลเพื่อรับผลประเมิน</button>
-        </fieldset> 
-      </form>
+          <!-- STEP 4: Running Ads & LINE OA -->
+          <div class="form-step hidden" data-step="4">
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1">สถานะการตลาดปัจจุบัน</h3>
+            <p class="text-[13px] text-text-gray mb-4">สถานะการยิงแอดและ LINE OA ของคุณตอนนี้</p>
+
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">ตอนนี้ยิงแอดอยู่ไหม? <span class="text-danger">*</span></label>
+                <select id="runningAds" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกสถานะ --</option>
+                  <option value="A. ยังไม่เคย">A. ยังไม่เคย</option>
+                  <option value="B. เคยบ้างไม่สม่ำเสมอ">B. เคยบ้างไม่สม่ำเสมอ</option>
+                  <option value="C. ยิงทุกเดือน">C. ยิงทุกเดือน</option>
+                  <option value="D. ยิงเยอะแต่ผลไม่นิ่ง">D. ยิงเยอะแต่ผลไม่นิ่ง</option>
+                  <option value="E. มีทีมแต่อยาก Optimize">E. มีทีมแต่อยาก Optimize</option>
+                </select>
+              </div>
+
+              <div class="h-px bg-border-blue"></div>
+
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">มี LINE OA / ระบบเก็บ Lead? <span class="text-danger">*</span></label>
+                <select id="hasLineOA" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกสถานะ --</option>
+                  <option value="A. ยังไม่มี">A. ยังไม่มี</option>
+                  <option value="B. มีแต่ตอบแชต">B. มีแต่ตอบแชต</option>
+                  <option value="C. มี + Broadcast">C. มี + Broadcast</option>
+                  <option value="D. มี Tag / Rich Menu / Automation">D. มี Tag / Rich Menu / Automation</option>
+                  <option value="E. มีแล้วอยากพัฒนาต่อ">E. มีแล้วอยากพัฒนาต่อ</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 5: Budget & Help Needed -->
+          <div class="form-step hidden" data-step="5">
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1">งบประมาณ & สิ่งที่อยากให้ช่วย</h3>
+            <p class="text-[13px] text-text-gray mb-4">ช่วยให้เราแนะนำแพ็กเกจที่เหมาะกับคุณที่สุด</p>
+
+            <div class="space-y-6">
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">งบการตลาดต่อเดือน? <span class="text-danger">*</span></label>
+                <select id="budget" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกงบประมาณ --</option>
+                  <option value="A. < 30K">A. &lt; 30K</option>
+                  <option value="B. 30–50K">B. 30–50K</option>
+                  <option value="C. 50–100K">C. 50–100K</option>
+                  <option value="D. 100–300K">D. 100–300K</option>
+                  <option value="E. > 300K บาท">E. &gt; 300K บาท</option>
+                  <option value="F. ยังไม่แน่ใจ">F. ยังไม่แน่ใจ</option>
+                </select>
+              </div>
+
+              <div class="h-px bg-border-blue"></div>
+
+              <div class="space-y-2">
+                <label class="block font-medium text-[15px] text-text-dark">อยากให้ SPARK ช่วยอะไรสุด? <span class="text-danger">*</span></label>
+                <select id="helpNeeded" required
+                  class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
+                  <option value="" disabled selected>-- เลือกสิ่งที่คุณต้องการ --</option>
+                  <option value="A. วางกลยุทธ์">A. วางกลยุทธ์</option>
+                  <option value="B. ยิงแอด Meta/Google/LINE">B. ยิงแอด Meta/Google/LINE</option>
+                  <option value="C. ทำคอนเทนต์">C. ทำคอนเทนต์</option>
+                  <option value="D. LINE OA / Game / Automation">D. LINE OA / Game / Automation</option>
+                  <option value="E. Full Funnel">E. Full Funnel</option>
+                  <option value="F. วิเคราะห์ก่อน">F. วิเคราะห์ก่อน</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 6: Contact -->
+          <div class="form-step hidden" data-step="6">
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1">ติดต่อกลับ</h3>
+            <p class="text-[13px] text-text-gray mb-4">ขั้นตอนสุดท้าย ก่อนส่งข้อมูลเพื่อรับผลประเมิน</p>
+
+            <div class="space-y-6">
+              <div class="space-y-3">
+                <label class="block font-medium text-[15px] text-text-dark">ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span class="text-danger">*</span></label>
+                <div class="flex flex-col gap-3 p-2 bg-primary-light rounded-xl">
+                  <label for="contactYes" class="flex items-center gap-3 cursor-pointer bg-white p-3 rounded-lg border border-transparent hover:border-primary/30 transition-all">
+                    <input type="radio" name="wantContact" id="contactYes" value="ต้องการ" required onchange="toggleContactFields()">
+                    <span class="text-[15px] font-medium text-primary-dark">ต้องการ</span>
+                  </label>
+                  <label for="contactNo" class="flex items-center gap-3 cursor-pointer bg-white p-3 rounded-lg border border-transparent hover:border-border-blue transition-all">
+                    <input type="radio" name="wantContact" id="contactNo" value="ไม่ต้องการ" onchange="toggleContactFields()">
+                    <span class="text-[15px] text-text-gray">ไม่ต้องการ</span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="contactSection" class="hidden space-y-4 bg-primary-light p-5 rounded-2xl border border-border-blue">
+                <h4 class="font-medium text-[15px] text-primary">ข้อมูลสำหรับติดต่อกลับ</h4>
+                <div class="space-y-2">
+                  <label class="text-[14px] font-medium text-text-dark">ชื่อ - นามสกุล <span class="text-danger">*</span></label>
+                  <input type="text" id="name" placeholder="ระบุชื่อและนามสกุล"
+                    class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[14px] font-medium text-text-dark">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" id="email" placeholder="example@email.com"
+                    class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
+                </div>
+                <div class="space-y-2">
+                  <label class="text-[14px] font-medium text-text-dark">เบอร์โทรติดต่อ <span class="text-danger">*</span></label>
+                  <input type="tel" id="phone" maxlength="10" placeholder="08xxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                    class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex gap-3 pt-6">
+            <button type="button" id="btnBack" onclick="goBack()"
+              class="btn-outline hidden flex-1 py-4 rounded-xl border border-border-blue text-text-dark font-medium text-[16px] transition-all">
+              ย้อนกลับ
+            </button>
+            <button type="button" id="btnNext" onclick="goNext()"
+              class="btn-gradient flex-1 text-white font-semibold text-[16px] py-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">
+              <span>ถัดไป</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+            <button type="submit" id="btnSubmit"
+              class="btn-gradient hidden flex-1 text-white font-semibold text-[16px] py-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">
+              <span id="btnSubmitLabel">ส่งข้อมูลเพื่อรับผลประเมิน</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
+    <!-- LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let userLineId = "";
       window.onload = function() { initializeLiff("2010654750-fC1R7YbU"); };
-      
+
       function initializeLiff(myLiffId) {
         liff.init({ liffId: myLiffId })
           .then(() => {
             if (liff.isLoggedIn()) {
               liff.getProfile().then(profile => { userLineId = profile.userId; }).catch(err => console.error(err));
-            } else { liff.login(); }
-          }).catch((err) => { console.log("LIFF failed", err); });
+            } else if (liff.isInClient()) {
+              // บังคับ login เฉพาะตอนเปิดจากในแอป LINE จริงๆ
+              liff.login();
+            } else {
+              // เปิดจากเบราว์เซอร์ทั่วไป/บอททดสอบ ข้าม login เพื่อให้เช็คหน้าเว็บได้
+              console.log("Opened outside LINE app - skipping LINE login for testing");
+            }
+          }).catch((err) => { console.log("LIFF failed (likely testing outside LINE), continuing without login:", err); });
       }
 
-      function toggleForm() {
-        const isChecked = document.getElementById('pdpaConsent').checked;
-        document.getElementById('mainFormContent').disabled = !isChecked;
+      // ===== Multi-step form =====
+      const TOTAL_STEPS = 6;
+      let currentStep = 1;
+
+      function showStep(step) {
+        document.querySelectorAll('.form-step').forEach(el => {
+          el.classList.toggle('hidden', Number(el.dataset.step) !== step);
+        });
+        document.getElementById('btnBack').classList.toggle('hidden', step === 1);
+        document.getElementById('btnNext').classList.toggle('hidden', step === TOTAL_STEPS);
+        document.getElementById('btnSubmit').classList.toggle('hidden', step !== TOTAL_STEPS);
+
+        document.getElementById('stepLabel').textContent = 'ขั้นตอน ' + step + ' จาก ' + TOTAL_STEPS;
+        const percent = Math.round((step / TOTAL_STEPS) * 100);
+        document.getElementById('stepPercent').textContent = percent + '%';
+        document.getElementById('progressBar').style.width = percent + '%';
+
+        document.querySelector('.form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function validateStep(step) {
+        if (step === 1) {
+          const consent = document.getElementById('pdpaConsent');
+          if (!consent.checked) {
+            consent.reportValidity();
+            return false;
+          }
+          return true;
+        }
+        const container = document.querySelector('.form-step[data-step="' + step + '"]');
+        const fields = container.querySelectorAll('input[required], select[required], textarea[required]');
+        for (const field of fields) {
+          if (field.offsetParent === null) continue; // ซ่อนอยู่ ไม่ต้องบังคับกรอก
+          if (!field.checkValidity()) {
+            field.reportValidity();
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function goNext() {
+        if (!validateStep(currentStep)) return;
+        if (currentStep < TOTAL_STEPS) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      }
+
+      function goBack() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+        }
       }
 
       function toggleOtherBusiness() {
@@ -393,9 +475,9 @@
         const otherSection = document.getElementById('otherBusinessSection');
         const otherInput = document.getElementById('otherBusiness');
         if (businessType === "H. อื่น ๆ") {
-          otherSection.style.display = "block"; otherInput.required = true;
+          otherSection.classList.remove('hidden'); otherInput.required = true;
         } else {
-          otherSection.style.display = "none"; otherInput.required = false; otherInput.value = "";
+          otherSection.classList.add('hidden'); otherInput.required = false; otherInput.value = "";
         }
       }
 
@@ -408,16 +490,16 @@
         const phoneInput = document.getElementById('phone');
 
         if (valContact === "ต้องการ") {
-          contactSection.style.display = "block"; 
-          nameInput.required = true; 
+          contactSection.classList.remove('hidden');
+          nameInput.required = true;
           emailInput.required = true;
           phoneInput.required = true;
         } else {
-          contactSection.style.display = "none"; 
-          nameInput.required = false; 
-          emailInput.required = false; 
+          contactSection.classList.add('hidden');
+          nameInput.required = false;
+          emailInput.required = false;
           phoneInput.required = false;
-          nameInput.value = ""; 
+          nameInput.value = "";
           emailInput.value = "";
           phoneInput.value = "";
         }
@@ -425,9 +507,10 @@
 
       function sendToGoogle() {
         const btnSubmit = document.getElementById('btnSubmit');
-        btnSubmit.innerText = "กำลังประมวลผล...";
+        const btnSubmitLabel = document.getElementById('btnSubmitLabel');
+        btnSubmitLabel.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">refresh</span> กำลังประมวลผล...';
         btnSubmit.disabled = true;
-        
+
         const contactRadio = document.querySelector('input[name="wantContact"]:checked');
 
         let finalBusinessType = document.getElementById('businessType').value;
@@ -449,11 +532,11 @@
           wantContact: contactRadio ? contactRadio.value : "",
           wantEmail: "", // กำหนดค่าว่างไว้เพื่อให้โครงสร้าง Column ใน Google Sheets ไม่คลาดเคลื่อน
           pdpaConsent: document.getElementById('pdpaConsent').checked ? "ยินยอม" : "ไม่ยินยอม",
-          lineUid: userLineId 
+          lineUid: userLineId
         };
-        
+
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEx570SZXYzJk2rj3smMplYEv2uiA6MepL0iVKa_0_jlDW7UHwzAc7_VvETvY_aiVdHw/exec";
-        
+
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
@@ -463,26 +546,24 @@
         .then(data => {
           if(data.status === "success") {
              const container = document.querySelector('.form-container');
-             // ปรับดีไซน์หน้า Success ให้เข้ากับธีมใหม่
              container.innerHTML = `
-               <div style="text-align: center; padding: 40px 10px;">
-                 <div style="font-size: 64px; margin-bottom: 20px; animation: popIn 0.5s ease-out;">🎉</div>
-                 <h2 style="color: #007BFF; margin-bottom: 15px; font-weight: 700;">ขอบคุณที่ตอบแบบสอบถาม</h2>
-                 <p style="font-size: 16px; color: #667085; line-height: 1.6; margin-bottom: 35px;">
+               <div class="text-center p-8 sm:p-12">
+                 <div class="w-20 h-20 mx-auto bg-success/10 rounded-full flex items-center justify-center mb-6 animate-pop-in">
+                   <span class="material-symbols-outlined text-success text-[40px]">check_circle</span>
+                 </div>
+                 <h2 class="text-primary font-bold text-[24px] mb-3">ขอบคุณที่ตอบแบบสอบถาม</h2>
+                 <p class="text-[15px] text-text-gray leading-[1.7] mb-8">
                    ระบบได้ประมวลผลเสร็จสิ้นแล้ว<br>ท่านสามารถดูผลลัพธ์การประเมินโครงสร้างธุรกิจ<br>ได้ที่แชท <strong>LINE OA</strong> ทันทีครับ
                  </p>
-                 <button id="btnGoToLine" style="width: 100%; padding: 16px; background: linear-gradient(135deg, #06C755 0%, #00B900 100%); color: white; border: none; font-size: 16px; font-weight: 600; font-family: 'Prompt', sans-serif; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);">
+                 <button id="btnGoToLine" class="w-full py-4 rounded-xl text-white font-semibold text-[16px] shadow-md transition-all hover:-translate-y-0.5" style="background: linear-gradient(135deg, #06C755 0%, #00B900 100%);">
                    เปิดแชท LINE เพื่อดูผลลัพธ์
                  </button>
                </div>
-               <style>
-                 @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 80% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
-               </style>
              `;
 
              document.getElementById('btnGoToLine').onclick = function() {
-               const lineOaUrl = "https://lin.ee/nJuryyo"; 
-               
+               const lineOaUrl = "https://lin.ee/nJuryyo";
+
                if (liff.isInClient()) {
                  window.location.href = lineOaUrl;
                  setTimeout(() => { liff.closeWindow(); }, 500);
@@ -493,13 +574,13 @@
 
           } else {
              alert("เกิดปัญหา: " + data.message);
-             btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+             btnSubmitLabel.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
              btnSubmit.disabled = false;
           }
         })
         .catch(error => {
           alert("เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบอินเทอร์เน็ต");
-          btnSubmit.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+          btnSubmitLabel.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
           btnSubmit.disabled = false;
         });
       }
