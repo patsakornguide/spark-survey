@@ -131,7 +131,33 @@
     </style>
   </head>
   <body class="bg-gradient-to-br from-[#e6f0ff] to-[#f0f2f5] min-h-screen flex items-center justify-center p-4 antialiased">
-    <div class="form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg">
+
+    <!-- Loading / device check -->
+    <div id="loadingState" class="flex flex-col items-center justify-center gap-3 text-text-gray py-20">
+      <span class="material-symbols-outlined animate-spin text-primary text-[32px]">progress_activity</span>
+      <span class="text-[14px]">กำลังตรวจสอบอุปกรณ์...</span>
+    </div>
+
+    <!-- Desktop / PC block screen -->
+    <div id="desktopBlock" class="hidden max-w-xl w-full bg-white rounded-[24px] shadow-card p-8 sm:p-10 text-center">
+      <div class="w-16 h-16 mx-auto bg-primary-light rounded-full flex items-center justify-center mb-5">
+        <span class="material-symbols-outlined text-primary text-[32px]">qr_code_2</span>
+      </div>
+      <h2 class="text-primary font-bold text-[22px] mb-2">กรุณาเปิดผ่านมือถือ</h2>
+      <p class="text-text-gray text-[15px] leading-[1.7] mb-6">
+        แบบประเมินนี้ใช้งานผ่าน LINE บนมือถือเท่านั้น เพื่อให้เราเก็บผลประเมินและติดต่อกลับได้ถูกคน<br>
+        สแกน QR Code ด้านล่างด้วยกล้องมือถือ หรือแอป LINE เพื่อเปิดหน้านี้
+      </p>
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=10&data=https%3A%2F%2Fliff.line.me%2F2006674119-kZ1RG7PE"
+        alt="QR Code สำหรับเปิดแบบประเมินบนมือถือ"
+        class="mx-auto rounded-xl border border-border-blue p-2 bg-white"
+        width="220" height="220">
+      <p class="text-[13px] text-text-gray mt-5">หรือเปิดลิงก์นี้บนมือถือ</p>
+      <p class="text-[13px] text-primary font-medium break-all mt-1">https://liff.line.me/2006674119-kZ1RG7PE</p>
+    </div>
+
+    <div id="mobileFormContainer" class="hidden form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg">
 
       <!-- Header -->
       <div class="bg-primary-light p-8 text-center border-b border-border-blue relative overflow-hidden">
@@ -397,21 +423,43 @@
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let userLineId = "";
-      window.onload = function() { initializeLiff("2010654750-fC1R7YbU"); };
+      window.onload = function() { initializeLiff("2006674119-kZ1RG7PE"); };
 
       function initializeLiff(myLiffId) {
         liff.init({ liffId: myLiffId })
           .then(() => {
-            if (liff.isLoggedIn()) {
-              liff.getProfile().then(profile => { userLineId = profile.userId; }).catch(err => console.error(err));
-            } else if (liff.isInClient()) {
-              // บังคับ login เฉพาะตอนเปิดจากในแอป LINE จริงๆ
-              liff.login();
-            } else {
-              // เปิดจากเบราว์เซอร์ทั่วไป/บอททดสอบ ข้าม login เพื่อให้เช็คหน้าเว็บได้
-              console.log("Opened outside LINE app - skipping LINE login for testing");
+            const os = liff.getOS(); // 'ios' | 'android' | 'web'(=เปิดจากคอม)
+            if (os === 'web') {
+              showDesktopBlock();
+              return;
             }
-          }).catch((err) => { console.log("LIFF failed (likely testing outside LINE), continuing without login:", err); });
+            // เปิดจากมือถือ (ในแอป LINE หรือเบราว์เซอร์มือถือ) ต้องเช็ค login ทุกครั้งเพื่อเก็บ UID
+            if (liff.isLoggedIn()) {
+              liff.getProfile()
+                .then(profile => { userLineId = profile.userId; showMobileForm(); })
+                .catch(err => { console.error(err); showMobileForm(); });
+            } else {
+              liff.login();
+            }
+          })
+          .catch((err) => {
+            console.log("LIFF init failed:", err);
+            // เผื่อกรณี LIFF โหลดไม่สำเร็จ ใช้ user agent เช็คสำรองแทน
+            const isMobileUA = /iphone|ipad|ipod|android/i.test(navigator.userAgent || "");
+            if (isMobileUA) { showMobileForm(); } else { showDesktopBlock(); }
+          });
+      }
+
+      function showMobileForm() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('desktopBlock').classList.add('hidden');
+        document.getElementById('mobileFormContainer').classList.remove('hidden');
+      }
+
+      function showDesktopBlock() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('mobileFormContainer').classList.add('hidden');
+        document.getElementById('desktopBlock').classList.remove('hidden');
       }
 
       // ===== Multi-step form =====
