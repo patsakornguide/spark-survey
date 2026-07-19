@@ -157,6 +157,26 @@
       <p class="text-[13px] text-primary font-medium break-all mt-1">https://liff.line.me/2006674119-kZ1RG7PE</p>
     </div>
 
+    <!-- Not a friend of the OA yet -->
+    <div id="notFriendBlock" class="hidden max-w-xl w-full bg-white rounded-[24px] shadow-card p-8 sm:p-10 text-center">
+      <div class="w-16 h-16 mx-auto bg-primary-light rounded-full flex items-center justify-center mb-5">
+        <span class="material-symbols-outlined text-primary text-[32px]">person_add</span>
+      </div>
+      <h2 class="text-primary font-bold text-[22px] mb-2">เพิ่มเพื่อน LINE OA ก่อนทำแบบประเมิน</h2>
+      <p class="text-text-gray text-[15px] leading-[1.7] mb-6">
+        กรุณาเพิ่มเพื่อน SPARK Factor เพื่อรับผลการประเมินและให้ทีมงานติดต่อกลับได้
+      </p>
+      <button type="button" onclick="addFriend()"
+        class="w-full py-4 rounded-xl text-white font-semibold text-[16px] shadow-md transition-all hover:-translate-y-0.5 mb-3"
+        style="background: linear-gradient(135deg, #06C755 0%, #00B900 100%);">
+        เพิ่มเพื่อน LINE OA
+      </button>
+      <button type="button" onclick="recheckFriend()"
+        class="btn-outline w-full py-3 rounded-xl border border-border-blue text-text-dark font-medium text-[15px] transition-all">
+        เพิ่มเพื่อนแล้ว ตรวจสอบอีกครั้ง
+      </button>
+    </div>
+
     <div id="mobileFormContainer" class="hidden form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg">
 
       <!-- Header -->
@@ -425,6 +445,8 @@
       let userLineId = "";
       window.onload = function() { initializeLiff("2006674119-kZ1RG7PE"); };
 
+      const LINE_OA_URL = "https://lin.ee/oIzQvcQD";
+
       function initializeLiff(myLiffId) {
         liff.init({ liffId: myLiffId })
           .then(() => {
@@ -433,14 +455,8 @@
               showDesktopBlock();
               return;
             }
-            // เปิดจากมือถือ (ในแอป LINE หรือเบราว์เซอร์มือถือ) ต้องเช็ค login ทุกครั้งเพื่อเก็บ UID
-            if (liff.isLoggedIn()) {
-              liff.getProfile()
-                .then(profile => { userLineId = profile.userId; showMobileForm(); })
-                .catch(err => { console.error(err); showMobileForm(); });
-            } else {
-              liff.login();
-            }
+            // เปิดจากมือถือ (ในแอป LINE หรือเบราว์เซอร์มือถือ) ต้องเช็ค login + สถานะเพื่อนทุกครั้ง
+            checkLoginAndFriend();
           })
           .catch((err) => {
             console.log("LIFF init failed:", err);
@@ -450,16 +466,64 @@
           });
       }
 
+      function checkLoginAndFriend() {
+        if (!liff.isLoggedIn()) {
+          liff.login();
+          return;
+        }
+        liff.getProfile()
+          .then(profile => {
+            userLineId = profile.userId;
+            return liff.getFriendship();
+          })
+          .then(friendship => {
+            if (friendship && friendship.friendFlag) {
+              showMobileForm();
+            } else {
+              showNotFriendBlock();
+            }
+          })
+          .catch(err => {
+            console.error("Login/friendship check failed:", err);
+            // เช็คสถานะเพื่อนไม่ได้ (เช่นยังไม่เปิด permission "Friendship status" ใน LIFF app)
+            // ปล่อยให้กรอกฟอร์มต่อได้ ดีกว่าบล็อกผู้ใช้ทั้งหมดเพราะ config ผิด
+            showMobileForm();
+          });
+      }
+
+      function addFriend() {
+        if (liff.isInClient()) {
+          liff.openWindow({ url: LINE_OA_URL, external: false });
+        } else {
+          window.open(LINE_OA_URL, '_blank');
+        }
+      }
+
+      function recheckFriend() {
+        document.getElementById('notFriendBlock').classList.add('hidden');
+        document.getElementById('loadingState').classList.remove('hidden');
+        checkLoginAndFriend();
+      }
+
       function showMobileForm() {
         document.getElementById('loadingState').classList.add('hidden');
         document.getElementById('desktopBlock').classList.add('hidden');
+        document.getElementById('notFriendBlock').classList.add('hidden');
         document.getElementById('mobileFormContainer').classList.remove('hidden');
       }
 
       function showDesktopBlock() {
         document.getElementById('loadingState').classList.add('hidden');
         document.getElementById('mobileFormContainer').classList.add('hidden');
+        document.getElementById('notFriendBlock').classList.add('hidden');
         document.getElementById('desktopBlock').classList.remove('hidden');
+      }
+
+      function showNotFriendBlock() {
+        document.getElementById('loadingState').classList.add('hidden');
+        document.getElementById('desktopBlock').classList.add('hidden');
+        document.getElementById('mobileFormContainer').classList.add('hidden');
+        document.getElementById('notFriendBlock').classList.remove('hidden');
       }
 
       // ===== Multi-step form =====
@@ -610,13 +674,11 @@
              `;
 
              document.getElementById('btnGoToLine').onclick = function() {
-               const lineOaUrl = "https://lin.ee/oIzQvcQD";
-
                if (liff.isInClient()) {
-                 window.location.href = lineOaUrl;
+                 window.location.href = LINE_OA_URL;
                  setTimeout(() => { liff.closeWindow(); }, 500);
                } else {
-                 window.open(lineOaUrl, '_blank');
+                 window.open(LINE_OA_URL, '_blank');
                }
              };
 
