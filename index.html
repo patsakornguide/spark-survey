@@ -742,7 +742,8 @@
           wantContact: contactRadio ? contactRadio.value : "",
           wantEmail: "", // กำหนดค่าว่างไว้เพื่อให้โครงสร้าง Column ใน Google Sheets ไม่คลาดเคลื่อน
           pdpaConsent: document.getElementById('pdpaConsent').checked ? "ยินยอม" : "ไม่ยินยอม",
-          lineUid: userLineId
+          lineUid: userLineId,
+          lang: currentLang
         };
 
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEx570SZXYzJk2rj3smMplYEv2uiA6MepL0iVKa_0_jlDW7UHwzAc7_VvETvY_aiVdHw/exec";
