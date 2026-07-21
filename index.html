@@ -132,10 +132,16 @@
   </head>
   <body class="bg-gradient-to-br from-[#e6f0ff] to-[#f0f2f5] min-h-screen flex items-center justify-center p-4 antialiased">
 
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50 flex bg-white/90 backdrop-blur-sm rounded-full shadow-md p-1 border border-border-blue">
+      <button id="lang-th" onclick="setLanguage('th')" class="px-3 py-1 text-[13px] font-medium rounded-full bg-primary text-white transition-all shadow-sm">TH</button>
+      <button id="lang-en" onclick="setLanguage('en')" class="px-3 py-1 text-[13px] font-medium rounded-full text-text-gray hover:bg-primary-light transition-all cursor-pointer">EN</button>
+    </div>
+
     <!-- Loading / device check -->
     <div id="loadingState" class="flex flex-col items-center justify-center gap-3 text-text-gray py-20">
       <span class="material-symbols-outlined animate-spin text-primary text-[32px]">progress_activity</span>
-      <span class="text-[14px]">กำลังตรวจสอบอุปกรณ์...</span>
+      <span class="text-[14px]" data-i18n="loadingCheck">กำลังตรวจสอบอุปกรณ์...</span>
     </div>
 
     <!-- Desktop / PC block screen -->
@@ -143,8 +149,8 @@
       <div class="w-16 h-16 mx-auto bg-primary-light rounded-full flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-primary text-[32px]">qr_code_2</span>
       </div>
-      <h2 class="text-primary font-bold text-[22px] mb-2">กรุณาเปิดผ่านมือถือ</h2>
-      <p class="text-text-gray text-[15px] leading-[1.7] mb-6">
+      <h2 class="text-primary font-bold text-[22px] mb-2" data-i18n="desktopTitle">กรุณาเปิดผ่านมือถือ</h2>
+      <p class="text-text-gray text-[15px] leading-[1.7] mb-6" data-i18n="desktopDesc1">
         แบบประเมินนี้ใช้งานผ่าน LINE บนมือถือเท่านั้น เพื่อให้เราเก็บผลประเมินและติดต่อกลับได้ถูกคน<br>
         สแกน QR Code ด้านล่างด้วยกล้องมือถือ หรือแอป LINE เพื่อเปิดหน้านี้
       </p>
@@ -153,7 +159,7 @@
         alt="QR Code สำหรับเปิดแบบประเมินบนมือถือ"
         class="mx-auto rounded-xl border border-border-blue p-2 bg-white"
         width="220" height="220">
-      <p class="text-[13px] text-text-gray mt-5">หรือเปิดลิงก์นี้บนมือถือ</p>
+      <p class="text-[13px] text-text-gray mt-5" data-i18n="desktopDesc2">หรือเปิดลิงก์นี้บนมือถือ</p>
       <p class="text-[13px] text-primary font-medium break-all mt-1">https://liff.line.me/2006674119-kZ1RG7PE</p>
     </div>
 
@@ -162,28 +168,28 @@
       <div class="w-16 h-16 mx-auto bg-primary-light rounded-full flex items-center justify-center mb-5">
         <span class="material-symbols-outlined text-primary text-[32px]">person_add</span>
       </div>
-      <h2 class="text-primary font-bold text-[22px] mb-2">เพิ่มเพื่อน LINE OA ก่อนทำแบบประเมิน</h2>
-      <p class="text-text-gray text-[15px] leading-[1.7] mb-6">
+      <h2 class="text-primary font-bold text-[22px] mb-2" data-i18n="notFriendTitle">เพิ่มเพื่อน LINE OA ก่อนทำแบบประเมิน</h2>
+      <p class="text-text-gray text-[15px] leading-[1.7] mb-6" data-i18n="notFriendDesc">
         กรุณาเพิ่มเพื่อน SPARK Factor เพื่อรับผลการประเมินและให้ทีมงานติดต่อกลับได้
       </p>
       <button type="button" onclick="addFriend()"
         class="w-full py-4 rounded-xl text-white font-semibold text-[16px] shadow-md transition-all hover:-translate-y-0.5 mb-3"
-        style="background: linear-gradient(135deg, #06C755 0%, #00B900 100%);">
+        style="background: linear-gradient(135deg, #06C755 0%, #00B900 100%);" data-i18n="btnAddFriend">
         เพิ่มเพื่อน LINE OA
       </button>
       <button type="button" onclick="recheckFriend()"
-        class="btn-outline w-full py-3 rounded-xl border border-border-blue text-text-dark font-medium text-[15px] transition-all">
+        class="btn-outline w-full py-3 rounded-xl border border-border-blue text-text-dark font-medium text-[15px] transition-all" data-i18n="btnRecheck">
         เพิ่มเพื่อนแล้ว ตรวจสอบอีกครั้ง
       </button>
     </div>
 
-    <div id="mobileFormContainer" class="hidden form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg">
+    <div id="mobileFormContainer" class="hidden form-container max-w-xl w-full bg-white rounded-[24px] shadow-card overflow-hidden transition-shadow duration-300 hover:shadow-card-lg mt-8 mb-8">
 
       <!-- Header -->
       <div class="bg-primary-light p-8 text-center border-b border-border-blue relative overflow-hidden">
         <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(circle at 100% 0%, #D6E7FF 0%, transparent 55%);"></div>
         <h2 class="relative z-10 text-primary font-bold text-[26px] sm:text-[28px] tracking-tight mb-1">✦ SPARK Growth Arcade</h2>
-        <p class="relative z-10 text-text-gray text-[15px]">แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ</p>
+        <p class="relative z-10 text-text-gray text-[15px]" data-i18n="headerDesc">แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ</p>
       </div>
 
       <div class="p-6 sm:p-8">
@@ -203,38 +209,20 @@
 
           <!-- STEP 1: PDPA Consent -->
           <div class="form-step" data-step="1">
-            <label class="block font-medium text-[15px] text-text-dark mb-2">นโยบายความเป็นส่วนตัว (PDPA Consent Form)</label>
+            <label class="block font-medium text-[15px] text-text-dark mb-2" data-i18n="step1Title">นโยบายความเป็นส่วนตัว (PDPA Consent Form)</label>
             <div class="bg-primary-light border border-border-blue rounded-2xl p-5">
               <h3 class="flex items-center justify-center gap-2 text-primary font-medium text-[15px] mb-3">
                 <span class="material-symbols-outlined text-[18px]">shield_person</span>
-                หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล
+                <span data-i18n="step1Subtitle">หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล</span>
               </h3>
-              <div class="h-[220px] overflow-y-auto pdpa-scrollbar bg-white rounded-xl p-4 text-[13px] leading-[1.7] text-text-gray border border-border-blue/60">
-                <p class="mt-0"><strong>บริษัท สปาร์ค แฟคเทอร์ จำกัด ("บริษัท")</strong> ให้ความสำคัญอย่างยิ่งยวดกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน บริษัทจึงจัดทำเอกสารฉบับนี้ขึ้นเพื่อขอความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</p>
-
-                <p class="mt-3"><strong>1. ข้อมูลส่วนบุคคลที่บริษัทเก็บรวบรวม</strong><br>บริษัทมีความจำเป็นต้องเก็บรวบรวมข้อมูลส่วนบุคคลของท่านที่ได้ให้ไว้ผ่านแบบสอบถามนี้ ได้แก่ ชื่อ-นามสกุล, หมายเลขโทรศัพท์, ที่อยู่อีเมล, ข้อมูลโครงสร้างธุรกิจ ปัญหา และเป้าหมายทางการตลาด</p>
-
-                <p class="mt-3"><strong>2. วัตถุประสงค์ในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูล (📌 เรานำข้อมูลของคุณไปทำอะไรบ้าง?)</strong></p>
-                <ul class="list-disc pl-5 mt-1 space-y-1">
-                  <li><strong>ประมวลผลและติดต่อกลับ:</strong> เพื่อจัดส่งผลลัพธ์ผ่านทางอีเมล และให้เจ้าหน้าที่ติดต่อกลับเพื่อนำเสนอข้อมูล ให้คำปรึกษา แนะนำสินค้า/บริการที่ตอบโจทย์ธุรกิจของคุณ</li>
-                  <li><strong>อัปเดตข่าวสารและโปรโมชั่น:</strong> เพื่อส่งข้อมูลสิทธิประโยชน์ กิจกรรม หรือข้อเสนอทางการตลาดเป็นครั้งคราว</li>
-                  <li><strong>พัฒนาโฆษณาให้ตรงใจ:</strong> นำข้อมูลไปใช้สร้างกลุ่มเป้าหมายสำหรับการโฆษณาออนไลน์ (เช่น Meta, Google, TikTok) เพื่อแสดงผลเฉพาะสิ่งที่คุณน่าจะสนใจ</li>
-                  <li><strong>ทำงานร่วมกับพันธมิตร:</strong> อาจมีการเปิดเผยข้อมูลเฉพาะเท่าที่จำเป็น ให้แก่แบรนด์ ลูกค้า หรือผู้ว่าจ้างที่เกี่ยวข้องกับแคมเปญนี้ เพื่อประโยชน์ในการให้บริการและนำเสนอผลิตภัณฑ์แก่คุณ</li>
-                </ul>
-
-                <p class="mt-3"><strong>3. 🔒 การดูแลความปลอดภัยและสิทธิของคุณ</strong><br>
-                บริษัทจะเก็บรักษาข้อมูลของคุณอย่างปลอดภัยเป็นระยะเวลา ไม่เกิน 2 ปี<br>
-                คุณมีสิทธิตามกฎหมาย (PDPA) ทุกประการ ในการขอเข้าถึง แก้ไข ขอให้ลบข้อมูล หรือ ขอยกเลิก/ถอนความยินยอมได้ทุกเมื่อ ผ่านช่องทางติดต่อของบริษัท</p>
-
-                <p class="text-[12px] text-[#888] mt-4">
-                  <em>(การกดปุ่มด้านล่าง ถือว่าท่านได้อ่าน ทำความเข้าใจ และยินยอมให้บริษัทดำเนินการตามวัตถุประสงค์ข้างต้นด้วยความสมัครใจ)</em>
-                </p>
+              <div class="h-[220px] overflow-y-auto pdpa-scrollbar bg-white rounded-xl p-4 text-[13px] leading-[1.7] text-text-gray border border-border-blue/60" id="pdpaContent">
+                <!-- PDPA Content injected by JS -->
               </div>
             </div>
 
             <div class="flex items-start gap-3 mt-4 bg-primary-light p-4 rounded-xl border border-border-blue">
               <input type="checkbox" id="pdpaConsent" required class="w-5 h-5 mt-0.5">
-              <label for="pdpaConsent" class="text-[14px] leading-[1.5] text-text-dark cursor-pointer">
+              <label for="pdpaConsent" class="text-[14px] leading-[1.5] text-text-dark cursor-pointer" data-i18n="pdpaConsentLabel">
                 ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ <span class="text-danger">*</span>
               </label>
             </div>
@@ -242,25 +230,25 @@
 
           <!-- STEP 2: Business Type -->
           <div class="form-step hidden" data-step="2">
-            <h3 class="text-[17px] font-semibold text-text-dark mb-1">ธุรกิจของคุณ</h3>
-            <p class="text-[13px] text-text-gray mb-4">บอกเราคร่าวๆ ว่าธุรกิจของคุณอยู่กลุ่มไหน</p>
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1" data-i18n="step2Title">ธุรกิจของคุณ</h3>
+            <p class="text-[13px] text-text-gray mb-4" data-i18n="step2Desc">บอกเราคร่าวๆ ว่าธุรกิจของคุณอยู่กลุ่มไหน</p>
 
             <div class="space-y-2">
-              <label class="block font-medium text-[15px] text-text-dark">ธุรกิจของคุณอยู่กลุ่มไหน? <span class="text-danger">*</span></label>
+              <label class="block font-medium text-[15px] text-text-dark" data-i18n="qBusinessType">ธุรกิจของคุณอยู่กลุ่มไหน? <span class="text-danger">*</span></label>
               <select id="businessType" required onchange="toggleOtherBusiness()"
                 class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                <option value="" disabled selected>-- เลือกกลุ่มธุรกิจ --</option>
-                <option value="A. Retail / E-commerce">A. Retail / E-commerce</option>
-                <option value="B. บริการ / B2B">B. บริการ / B2B</option>
-                <option value="C. อสังหา / Luxury">C. อสังหา / Luxury</option>
-                <option value="D. Healthcare / Beauty">D. Healthcare / Beauty</option>
-                <option value="E. Education">E. Education</option>
-                <option value="F. Agency / Media">F. Agency / Media</option>
-                <option value="G. Movie / Series Production">G. Movie / Series Production</option>
-                <option value="H. อื่น ๆ">H. อื่น ๆ</option>
+                <option value="" disabled selected data-th="-- เลือกกลุ่มธุรกิจ --" data-en="-- Select Industry --">-- เลือกกลุ่มธุรกิจ --</option>
+                <option value="A. Retail / E-commerce" data-th="A. Retail / E-commerce" data-en="A. Retail / E-commerce">A. Retail / E-commerce</option>
+                <option value="B. บริการ / B2B" data-th="B. บริการ / B2B" data-en="B. Service / B2B">B. บริการ / B2B</option>
+                <option value="C. อสังหา / Luxury" data-th="C. อสังหา / Luxury" data-en="C. Real Estate / Luxury">C. อสังหา / Luxury</option>
+                <option value="D. Healthcare / Beauty" data-th="D. Healthcare / Beauty" data-en="D. Healthcare / Beauty">D. Healthcare / Beauty</option>
+                <option value="E. Education" data-th="E. Education" data-en="E. Education">E. Education</option>
+                <option value="F. Agency / Media" data-th="F. Agency / Media" data-en="F. Agency / Media">F. Agency / Media</option>
+                <option value="G. Movie / Series Production" data-th="G. Movie / Series Production" data-en="G. Movie / Series Production">G. Movie / Series Production</option>
+                <option value="H. อื่น ๆ" data-th="H. อื่น ๆ" data-en="H. Other">H. อื่น ๆ</option>
               </select>
               <div id="otherBusinessSection" class="hidden pl-4 border-l-2 border-primary mt-2">
-                <input type="text" id="otherBusiness" placeholder="โปรดระบุธุรกิจของคุณ..."
+                <input type="text" id="otherBusiness" placeholder="โปรดระบุธุรกิจของคุณ..." data-th-placeholder="โปรดระบุธุรกิจของคุณ..." data-en-placeholder="Please specify your business..."
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3 px-4 text-[15px] text-text-dark transition-all">
               </div>
             </div>
@@ -268,37 +256,37 @@
 
           <!-- STEP 3: Goal & Problem -->
           <div class="form-step hidden" data-step="3">
-            <h3 class="text-[17px] font-semibold text-text-dark mb-1">เป้าหมาย & ปัญหา</h3>
-            <p class="text-[13px] text-text-gray mb-4">สิ่งที่คุณอยากได้ และสิ่งที่ติดขัดอยู่ตอนนี้</p>
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1" data-i18n="step3Title">เป้าหมาย & ปัญหา</h3>
+            <p class="text-[13px] text-text-gray mb-4" data-i18n="step3Desc">สิ่งที่คุณอยากได้ และสิ่งที่ติดขัดอยู่ตอนนี้</p>
 
             <div class="space-y-6">
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">เป้าหมายหลักตอนนี้? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qMainGoal">เป้าหมายหลักตอนนี้? <span class="text-danger">*</span></label>
                 <select id="mainGoal" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกเป้าหมาย --</option>
-                  <option value="A. ให้คนรู้จักแบรนด์">A. ให้คนรู้จักแบรนด์</option>
-                  <option value="B. ได้ Lead / คนทัก / ลงทะเบียน">B. ได้ Lead / คนทัก / ลงทะเบียน</option>
-                  <option value="C. เพิ่มยอดขาย">C. เพิ่มยอดขาย</option>
-                  <option value="D. อยากยิงแอดให้คุ้มขึ้น">D. อยากยิงแอดให้คุ้มขึ้น</option>
-                  <option value="E. คอนเทนต์มีทิศทาง">E. คอนเทนต์มีทิศทาง</option>
-                  <option value="F. ใช้ LINE OA ให้มีประสิทธิภาพ">F. ใช้ LINE OA ให้มีประสิทธิภาพ</option>
+                  <option value="" disabled selected data-th="-- เลือกเป้าหมาย --" data-en="-- Select Goal --">-- เลือกเป้าหมาย --</option>
+                  <option value="A. ให้คนรู้จักแบรนด์" data-th="A. ให้คนรู้จักแบรนด์" data-en="A. Brand Awareness">A. ให้คนรู้จักแบรนด์</option>
+                  <option value="B. ได้ Lead / คนทัก / ลงทะเบียน" data-th="B. ได้ Lead / คนทัก / ลงทะเบียน" data-en="B. Get Leads / Inquiries / Registrations">B. ได้ Lead / คนทัก / ลงทะเบียน</option>
+                  <option value="C. เพิ่มยอดขาย" data-th="C. เพิ่มยอดขาย" data-en="C. Increase Sales">C. เพิ่มยอดขาย</option>
+                  <option value="D. อยากยิงแอดให้คุ้มขึ้น" data-th="D. อยากยิงแอดให้คุ้มขึ้น" data-en="D. Optimize Ad Spend (Better ROI)">D. อยากยิงแอดให้คุ้มขึ้น</option>
+                  <option value="E. คอนเทนต์มีทิศทาง" data-th="E. คอนเทนต์มีทิศทาง" data-en="E. Better Content Direction">E. คอนเทนต์มีทิศทาง</option>
+                  <option value="F. ใช้ LINE OA ให้มีประสิทธิภาพ" data-th="F. ใช้ LINE OA ให้มีประสิทธิภาพ" data-en="F. Maximize LINE OA Efficiency">F. ใช้ LINE OA ให้มีประสิทธิภาพ</option>
                 </select>
               </div>
 
               <div class="h-px bg-border-blue"></div>
 
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">ปัญหาหลักที่เจอ? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qMainProblem">ปัญหาหลักที่เจอ? <span class="text-danger">*</span></label>
                 <select id="mainProblem" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกปัญหาหลัก --</option>
-                  <option value="A. ไม่รู้จะเริ่มกลยุทธ์">A. ไม่รู้จะเริ่มกลยุทธ์</option>
-                  <option value="B. คอนเทนต์คนไม่สนใจ">B. คอนเทนต์คนไม่สนใจ</option>
-                  <option value="C. ยิงแอดแพง">C. ยิงแอดแพง</option>
-                  <option value="D. คนเห็นเยอะแต่ไม่ทัก">D. คนเห็นเยอะแต่ไม่ทัก</option>
-                  <option value="E. ทักแต่ปิดไม่ได้">E. ทักแต่ปิดไม่ได้</option>
-                  <option value="F. LINE ใช้ไม่เต็มที่">F. LINE ใช้ไม่เต็มที่</option>
+                  <option value="" disabled selected data-th="-- เลือกปัญหาหลัก --" data-en="-- Select Main Problem --">-- เลือกปัญหาหลัก --</option>
+                  <option value="A. ไม่รู้จะเริ่มกลยุทธ์" data-th="A. ไม่รู้จะเริ่มกลยุทธ์" data-en="A. Don't know where to start with strategy">A. ไม่รู้จะเริ่มกลยุทธ์</option>
+                  <option value="B. คอนเทนต์คนไม่สนใจ" data-th="B. คอนเทนต์คนไม่สนใจ" data-en="B. Content lacks engagement">B. คอนเทนต์คนไม่สนใจ</option>
+                  <option value="C. ยิงแอดแพง" data-th="C. ยิงแอดแพง" data-en="C. High ad costs">C. ยิงแอดแพง</option>
+                  <option value="D. คนเห็นเยอะแต่ไม่ทัก" data-th="D. คนเห็นเยอะแต่ไม่ทัก" data-en="D. High reach but no inquiries">D. คนเห็นเยอะแต่ไม่ทัก</option>
+                  <option value="E. ทักแต่ปิดไม่ได้" data-th="E. ทักแต่ปิดไม่ได้" data-en="E. Getting inquiries but struggling to close sales">E. ทักแต่ปิดไม่ได้</option>
+                  <option value="F. LINE ใช้ไม่เต็มที่" data-th="F. LINE ใช้ไม่เต็มที่" data-en="F. Not fully utilizing LINE OA">F. LINE ใช้ไม่เต็มที่</option>
                 </select>
               </div>
             </div>
@@ -306,35 +294,35 @@
 
           <!-- STEP 4: Running Ads & LINE OA -->
           <div class="form-step hidden" data-step="4">
-            <h3 class="text-[17px] font-semibold text-text-dark mb-1">สถานะการตลาดปัจจุบัน</h3>
-            <p class="text-[13px] text-text-gray mb-4">สถานะการยิงแอดและ LINE OA ของคุณตอนนี้</p>
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1" data-i18n="step4Title">สถานะการตลาดปัจจุบัน</h3>
+            <p class="text-[13px] text-text-gray mb-4" data-i18n="step4Desc">สถานะการยิงแอดและ LINE OA ของคุณตอนนี้</p>
 
             <div class="space-y-6">
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">ตอนนี้ยิงแอดอยู่ไหม? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qRunningAds">ตอนนี้ยิงแอดอยู่ไหม? <span class="text-danger">*</span></label>
                 <select id="runningAds" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกสถานะ --</option>
-                  <option value="A. ยังไม่เคย">A. ยังไม่เคย</option>
-                  <option value="B. เคยบ้างไม่สม่ำเสมอ">B. เคยบ้างไม่สม่ำเสมอ</option>
-                  <option value="C. ยิงทุกเดือน">C. ยิงทุกเดือน</option>
-                  <option value="D. ยิงเยอะแต่ผลไม่นิ่ง">D. ยิงเยอะแต่ผลไม่นิ่ง</option>
-                  <option value="E. มีทีมแต่อยาก Optimize">E. มีทีมแต่อยาก Optimize</option>
+                  <option value="" disabled selected data-th="-- เลือกสถานะ --" data-en="-- Select Status --">-- เลือกสถานะ --</option>
+                  <option value="A. ยังไม่เคย" data-th="A. ยังไม่เคย" data-en="A. Never">A. ยังไม่เคย</option>
+                  <option value="B. เคยบ้างไม่สม่ำเสมอ" data-th="B. เคยบ้างไม่สม่ำเสมอ" data-en="B. Occasionally, but inconsistent">B. เคยบ้างไม่สม่ำเสมอ</option>
+                  <option value="C. ยิงทุกเดือน" data-th="C. ยิงทุกเดือน" data-en="C. Consistently every month">C. ยิงทุกเดือน</option>
+                  <option value="D. ยิงเยอะแต่ผลไม่นิ่ง" data-th="D. ยิงเยอะแต่ผลไม่นิ่ง" data-en="D. High spend but unstable results">D. ยิงเยอะแต่ผลไม่นิ่ง</option>
+                  <option value="E. มีทีมแต่อยาก Optimize" data-th="E. มีทีมแต่อยาก Optimize" data-en="E. Have a team but want to optimize">E. มีทีมแต่อยาก Optimize</option>
                 </select>
               </div>
 
               <div class="h-px bg-border-blue"></div>
 
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">มี LINE OA / ระบบเก็บ Lead? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qHasLineOA">มี LINE OA / ระบบเก็บ Lead? <span class="text-danger">*</span></label>
                 <select id="hasLineOA" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกสถานะ --</option>
-                  <option value="A. ยังไม่มี">A. ยังไม่มี</option>
-                  <option value="B. มีแต่ตอบแชต">B. มีแต่ตอบแชต</option>
-                  <option value="C. มี + Broadcast">C. มี + Broadcast</option>
-                  <option value="D. มี Tag / Rich Menu / Automation">D. มี Tag / Rich Menu / Automation</option>
-                  <option value="E. มีแล้วอยากพัฒนาต่อ">E. มีแล้วอยากพัฒนาต่อ</option>
+                  <option value="" disabled selected data-th="-- เลือกสถานะ --" data-en="-- Select Status --">-- เลือกสถานะ --</option>
+                  <option value="A. ยังไม่มี" data-th="A. ยังไม่มี" data-en="A. None yet">A. ยังไม่มี</option>
+                  <option value="B. มีแต่ตอบแชต" data-th="B. มีแต่ตอบแชต" data-en="B. Yes, but only for chatting">B. มีแต่ตอบแชต</option>
+                  <option value="C. มี + Broadcast" data-th="C. มี + Broadcast" data-en="C. Yes, with broadcasting">C. มี + Broadcast</option>
+                  <option value="D. มี Tag / Rich Menu / Automation" data-th="D. มี Tag / Rich Menu / Automation" data-en="D. Yes, with tags / rich menus / automation">D. มี Tag / Rich Menu / Automation</option>
+                  <option value="E. มีแล้วอยากพัฒนาต่อ" data-th="E. มีแล้วอยากพัฒนาต่อ" data-en="E. Yes, and looking to optimize further">E. มีแล้วอยากพัฒนาต่อ</option>
                 </select>
               </div>
             </div>
@@ -342,37 +330,37 @@
 
           <!-- STEP 5: Budget & Help Needed -->
           <div class="form-step hidden" data-step="5">
-            <h3 class="text-[17px] font-semibold text-text-dark mb-1">งบประมาณ & สิ่งที่อยากให้ช่วย</h3>
-            <p class="text-[13px] text-text-gray mb-4">ช่วยให้เราแนะนำแพ็กเกจที่เหมาะกับคุณที่สุด</p>
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1" data-i18n="step5Title">งบประมาณ & สิ่งที่อยากให้ช่วย</h3>
+            <p class="text-[13px] text-text-gray mb-4" data-i18n="step5Desc">ช่วยให้เราแนะนำแพ็กเกจที่เหมาะกับคุณที่สุด</p>
 
             <div class="space-y-6">
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">งบการตลาดต่อเดือน? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qBudget">งบการตลาดต่อเดือน? <span class="text-danger">*</span></label>
                 <select id="budget" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกงบประมาณ --</option>
-                  <option value="A. < 30K">A. &lt; 30K</option>
-                  <option value="B. 30–50K">B. 30–50K</option>
-                  <option value="C. 50–100K">C. 50–100K</option>
-                  <option value="D. 100–300K">D. 100–300K</option>
-                  <option value="E. > 300K บาท">E. &gt; 300K บาท</option>
-                  <option value="F. ยังไม่แน่ใจ">F. ยังไม่แน่ใจ</option>
+                  <option value="" disabled selected data-th="-- เลือกงบประมาณ --" data-en="-- Select Budget --">-- เลือกงบประมาณ --</option>
+                  <option value="A. < 30K" data-th="A. < 30K" data-en="A. < 30K">A. &lt; 30K</option>
+                  <option value="B. 30–50K" data-th="B. 30–50K" data-en="B. 30–50K">B. 30–50K</option>
+                  <option value="C. 50–100K" data-th="C. 50–100K" data-en="C. 50–100K">C. 50–100K</option>
+                  <option value="D. 100–300K" data-th="D. 100–300K" data-en="D. 100–300K">D. 100–300K</option>
+                  <option value="E. > 300K บาท" data-th="E. > 300K บาท" data-en="E. > 300K THB">E. &gt; 300K บาท</option>
+                  <option value="F. ยังไม่แน่ใจ" data-th="F. ยังไม่แน่ใจ" data-en="F. Not sure yet">F. ยังไม่แน่ใจ</option>
                 </select>
               </div>
 
               <div class="h-px bg-border-blue"></div>
 
               <div class="space-y-2">
-                <label class="block font-medium text-[15px] text-text-dark">อยากให้ SPARK ช่วยอะไรสุด? <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qHelpNeeded">อยากให้ SPARK ช่วยอะไรสุด? <span class="text-danger">*</span></label>
                 <select id="helpNeeded" required
                   class="input-glow w-full rounded-xl border border-border-blue bg-primary-light py-3.5 px-4 text-[15px] text-text-dark transition-all">
-                  <option value="" disabled selected>-- เลือกสิ่งที่คุณต้องการ --</option>
-                  <option value="A. วางกลยุทธ์">A. วางกลยุทธ์</option>
-                  <option value="B. ยิงแอด Meta/Google/LINE">B. ยิงแอด Meta/Google/LINE</option>
-                  <option value="C. ทำคอนเทนต์">C. ทำคอนเทนต์</option>
-                  <option value="D. LINE OA / Game / Automation">D. LINE OA / Game / Automation</option>
-                  <option value="E. Full Funnel">E. Full Funnel</option>
-                  <option value="F. วิเคราะห์ก่อน">F. วิเคราะห์ก่อน</option>
+                  <option value="" disabled selected data-th="-- เลือกสิ่งที่คุณต้องการ --" data-en="-- Select What You Need --">-- เลือกสิ่งที่คุณต้องการ --</option>
+                  <option value="A. วางกลยุทธ์" data-th="A. วางกลยุทธ์" data-en="A. Strategy Planning">A. วางกลยุทธ์</option>
+                  <option value="B. ยิงแอด Meta/Google/LINE" data-th="B. ยิงแอด Meta/Google/LINE" data-en="B. Media Buying (Meta/Google/LINE)">B. ยิงแอด Meta/Google/LINE</option>
+                  <option value="C. ทำคอนเทนต์" data-th="C. ทำคอนเทนต์" data-en="C. Content Creation">C. ทำคอนเทนต์</option>
+                  <option value="D. LINE OA / Game / Automation" data-th="D. LINE OA / Game / Automation" data-en="D. LINE OA / Game / Automation">D. LINE OA / Game / Automation</option>
+                  <option value="E. Full Funnel" data-th="E. Full Funnel" data-en="E. Full Funnel Marketing">E. Full Funnel</option>
+                  <option value="F. วิเคราะห์ก่อน" data-th="F. วิเคราะห์ก่อน" data-en="F. Business Analysis First">F. วิเคราะห์ก่อน</option>
                 </select>
               </div>
             </div>
@@ -380,39 +368,39 @@
 
           <!-- STEP 6: Contact -->
           <div class="form-step hidden" data-step="6">
-            <h3 class="text-[17px] font-semibold text-text-dark mb-1">ติดต่อกลับ</h3>
-            <p class="text-[13px] text-text-gray mb-4">ขั้นตอนสุดท้าย ก่อนส่งข้อมูลเพื่อรับผลประเมิน</p>
+            <h3 class="text-[17px] font-semibold text-text-dark mb-1" data-i18n="step6Title">ติดต่อกลับ</h3>
+            <p class="text-[13px] text-text-gray mb-4" data-i18n="step6Desc">ขั้นตอนสุดท้าย ก่อนส่งข้อมูลเพื่อรับผลประเมิน</p>
 
             <div class="space-y-6">
               <div class="space-y-3">
-                <label class="block font-medium text-[15px] text-text-dark">ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span class="text-danger">*</span></label>
+                <label class="block font-medium text-[15px] text-text-dark" data-i18n="qWantContact">ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span class="text-danger">*</span></label>
                 <div class="flex flex-col gap-3 p-2 bg-primary-light rounded-xl">
                   <label for="contactYes" class="flex items-center gap-3 cursor-pointer bg-white p-3 rounded-lg border border-transparent hover:border-primary/30 transition-all">
                     <input type="radio" name="wantContact" id="contactYes" value="ต้องการ" required onchange="toggleContactFields()">
-                    <span class="text-[15px] font-medium text-primary-dark">ต้องการ</span>
+                    <span class="text-[15px] font-medium text-primary-dark" data-i18n="optWantContactYes">ต้องการ</span>
                   </label>
                   <label for="contactNo" class="flex items-center gap-3 cursor-pointer bg-white p-3 rounded-lg border border-transparent hover:border-border-blue transition-all">
                     <input type="radio" name="wantContact" id="contactNo" value="ไม่ต้องการ" onchange="toggleContactFields()">
-                    <span class="text-[15px] text-text-gray">ไม่ต้องการ</span>
+                    <span class="text-[15px] text-text-gray" data-i18n="optWantContactNo">ไม่ต้องการ</span>
                   </label>
                 </div>
               </div>
 
               <div id="contactSection" class="hidden space-y-4 bg-primary-light p-5 rounded-2xl border border-border-blue">
-                <h4 class="font-medium text-[15px] text-primary">ข้อมูลสำหรับติดต่อกลับ</h4>
+                <h4 class="font-medium text-[15px] text-primary" data-i18n="contactSectionTitle">ข้อมูลสำหรับติดต่อกลับ</h4>
                 <div class="space-y-2">
-                  <label class="text-[14px] font-medium text-text-dark">ชื่อ - นามสกุล <span class="text-danger">*</span></label>
-                  <input type="text" id="name" placeholder="ระบุชื่อและนามสกุล"
+                  <label class="text-[14px] font-medium text-text-dark" data-i18n="labelName">ชื่อ - นามสกุล <span class="text-danger">*</span></label>
+                  <input type="text" id="name" placeholder="ระบุชื่อและนามสกุล" data-th-placeholder="ระบุชื่อและนามสกุล" data-en-placeholder="Enter your full name"
                     class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
                 </div>
                 <div class="space-y-2">
-                  <label class="text-[14px] font-medium text-text-dark">Email Address <span class="text-danger">*</span></label>
-                  <input type="email" id="email" placeholder="example@email.com"
+                  <label class="text-[14px] font-medium text-text-dark" data-i18n="labelEmail">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" id="email" placeholder="example@email.com" data-th-placeholder="example@email.com" data-en-placeholder="example@email.com"
                     class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
                 </div>
                 <div class="space-y-2">
-                  <label class="text-[14px] font-medium text-text-dark">เบอร์โทรติดต่อ <span class="text-danger">*</span></label>
-                  <input type="tel" id="phone" maxlength="10" placeholder="08xxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                  <label class="text-[14px] font-medium text-text-dark" data-i18n="labelPhone">เบอร์โทรติดต่อ <span class="text-danger">*</span></label>
+                  <input type="tel" id="phone" maxlength="10" placeholder="08xxxxxxxx" data-th-placeholder="08xxxxxxxx" data-en-placeholder="08xxxxxxxx" oninput="this.value = this.value.replace(/[^0-9]/g, '');"
                     class="input-glow w-full rounded-xl border border-border-blue bg-white py-3 px-4 text-[15px] text-text-dark transition-all">
                 </div>
               </div>
@@ -422,17 +410,17 @@
           <!-- Navigation -->
           <div class="flex gap-3 pt-6">
             <button type="button" id="btnBack" onclick="goBack()"
-              class="btn-outline hidden flex-1 py-4 rounded-xl border border-border-blue text-text-dark font-medium text-[16px] transition-all">
+              class="btn-outline hidden flex-1 py-4 rounded-xl border border-border-blue text-text-dark font-medium text-[16px] transition-all" data-i18n="btnBack">
               ย้อนกลับ
             </button>
             <button type="button" id="btnNext" onclick="goNext()"
               class="btn-gradient flex-1 text-white font-semibold text-[16px] py-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">
-              <span>ถัดไป</span>
+              <span data-i18n="btnNext">ถัดไป</span>
               <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
             <button type="submit" id="btnSubmit"
               class="btn-gradient hidden flex-1 text-white font-semibold text-[16px] py-4 rounded-xl shadow-md transition-all flex justify-center items-center gap-2">
-              <span id="btnSubmitLabel">ส่งข้อมูลเพื่อรับผลประเมิน</span>
+              <span id="btnSubmitLabel" data-i18n="btnSubmitLabel">ส่งข้อมูลเพื่อรับผลประเมิน</span>
             </button>
           </div>
         </form>
@@ -442,6 +430,133 @@
     <!-- LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+      // ================= TRANSLATION SYSTEM =================
+      let currentLang = 'th';
+
+      const pdpaTH = `
+        <p class="mt-0"><strong>บริษัท สปาร์ค แฟคเทอร์ จำกัด ("บริษัท")</strong> ให้ความสำคัญอย่างยิ่งยวดกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน บริษัทจึงจัดทำเอกสารฉบับนี้ขึ้นเพื่อขอความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่าน ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA)</p>
+        <p class="mt-3"><strong>1. ข้อมูลส่วนบุคคลที่บริษัทเก็บรวบรวม</strong><br>บริษัทมีความจำเป็นต้องเก็บรวบรวมข้อมูลส่วนบุคคลของท่านที่ได้ให้ไว้ผ่านแบบสอบถามนี้ ได้แก่ ชื่อ-นามสกุล, หมายเลขโทรศัพท์, ที่อยู่อีเมล, ข้อมูลโครงสร้างธุรกิจ ปัญหา และเป้าหมายทางการตลาด</p>
+        <p class="mt-3"><strong>2. วัตถุประสงค์ในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูล (📌 เรานำข้อมูลของคุณไปทำอะไรบ้าง?)</strong></p>
+        <ul class="list-disc pl-5 mt-1 space-y-1">
+          <li><strong>ประมวลผลและติดต่อกลับ:</strong> เพื่อจัดส่งผลลัพธ์ผ่านทางอีเมล และให้เจ้าหน้าที่ติดต่อกลับเพื่อนำเสนอข้อมูล ให้คำปรึกษา แนะนำสินค้า/บริการที่ตอบโจทย์ธุรกิจของคุณ</li>
+          <li><strong>อัปเดตข่าวสารและโปรโมชั่น:</strong> เพื่อส่งข้อมูลสิทธิประโยชน์ กิจกรรม หรือข้อเสนอทางการตลาดเป็นครั้งคราว</li>
+          <li><strong>พัฒนาโฆษณาให้ตรงใจ:</strong> นำข้อมูลไปใช้สร้างกลุ่มเป้าหมายสำหรับการโฆษณาออนไลน์ (เช่น Meta, Google, TikTok) เพื่อแสดงผลเฉพาะสิ่งที่คุณน่าจะสนใจ</li>
+          <li><strong>ทำงานร่วมกับพันธมิตร:</strong> อาจมีการเปิดเผยข้อมูลเฉพาะเท่าที่จำเป็น ให้แก่แบรนด์ ลูกค้า หรือผู้ว่าจ้างที่เกี่ยวข้องกับแคมเปญนี้ เพื่อประโยชน์ในการให้บริการและนำเสนอผลิตภัณฑ์แก่คุณ</li>
+        </ul>
+        <p class="mt-3"><strong>3. 🔒 การดูแลความปลอดภัยและสิทธิของคุณ</strong><br>บริษัทจะเก็บรักษาข้อมูลของคุณอย่างปลอดภัยเป็นระยะเวลา ไม่เกิน 2 ปี<br>คุณมีสิทธิตามกฎหมาย (PDPA) ทุกประการ ในการขอเข้าถึง แก้ไข ขอให้ลบข้อมูล หรือ ขอยกเลิก/ถอนความยินยอมได้ทุกเมื่อ ผ่านช่องทางติดต่อของบริษัท</p>
+        <p class="text-[12px] text-[#888] mt-4"><em>(การกดปุ่มด้านล่าง ถือว่าท่านได้อ่าน ทำความเข้าใจ และยินยอมให้บริษัทดำเนินการตามวัตถุประสงค์ข้างต้นด้วยความสมัครใจ)</em></p>
+      `;
+
+      const pdpaEN = `
+        <p class="mt-0"><strong>SPARK FACTOR CO., LTD. ("Company")</strong> highly values the protection of your personal data. This document is created to request your consent for the collection, use, and disclosure of your personal data in accordance with the Personal Data Protection Act B.E. 2562 (PDPA).</p>
+        <p class="mt-3"><strong>1. Personal Data Collected</strong><br>The Company needs to collect the personal data provided through this form, including your full name, phone number, email address, business structure information, marketing problems, and goals.</p>
+        <p class="mt-3"><strong>2. Objectives for Collection, Use, and Disclosure (📌 How we use your data)</strong></p>
+        <ul class="list-disc pl-5 mt-1 space-y-1">
+          <li><strong>Process and Contact:</strong> To send results via email and allow our staff to contact you for a consultation and product/service recommendations suitable for your business.</li>
+          <li><strong>Updates & Promotions:</strong> To occasionally send privileges, activities, or marketing offers.</li>
+          <li><strong>Targeted Advertising:</strong> To use data for creating online ad audiences (e.g., Meta, Google, TikTok) to show you relevant content.</li>
+          <li><strong>Partner Collaboration:</strong> To disclose necessary information to brands, clients, or employers related to this campaign to provide better services.</li>
+        </ul>
+        <p class="mt-3"><strong>3. 🔒 Security and Your Rights</strong><br>The Company will securely store your data for no more than 2 years.<br>You have full legal rights under the PDPA to request access, correction, deletion, or withdrawal of consent at any time via the Company's contact channels.</p>
+        <p class="text-[12px] text-[#888] mt-4"><em>(By checking the box below, you acknowledge that you have read, understood, and voluntarily consent to the Company processing your data for the stated objectives.)</em></p>
+      `;
+
+      const translations = {
+        loadingCheck: { th: "กำลังตรวจสอบอุปกรณ์...", en: "Checking device..." },
+        desktopTitle: { th: "กรุณาเปิดผ่านมือถือ", en: "Please open on mobile" },
+        desktopDesc1: {
+            th: "แบบประเมินนี้ใช้งานผ่าน LINE บนมือถือเท่านั้น เพื่อให้เราเก็บผลประเมินและติดต่อกลับได้ถูกคน<br>สแกน QR Code ด้านล่างด้วยกล้องมือถือ หรือแอป LINE เพื่อเปิดหน้านี้",
+            en: "This assessment is optimized for LINE on mobile to ensure accurate results and follow-ups.<br>Scan the QR code below with your mobile camera or LINE app."
+        },
+        desktopDesc2: { th: "หรือเปิดลิงก์นี้บนมือถือ", en: "Or open this link on mobile:" },
+        notFriendTitle: { th: "เพิ่มเพื่อน LINE OA ก่อนทำแบบประเมิน", en: "Add our LINE OA first" },
+        notFriendDesc: { th: "กรุณาเพิ่มเพื่อน SPARK Factor เพื่อรับผลการประเมินและให้ทีมงานติดต่อกลับได้", en: "Please add SPARK Factor as a friend to receive your results and allow our team to contact you." },
+        btnAddFriend: { th: "เพิ่มเพื่อน LINE OA", en: "Add LINE OA" },
+        btnRecheck: { th: "เพิ่มเพื่อนแล้ว ตรวจสอบอีกครั้ง", en: "Already added? Check again" },
+        headerDesc: { th: "แบบประเมินและวิเคราะห์โครงสร้างธุรกิจ", en: "Business Structure Assessment & Analysis" },
+        step1Title: { th: "นโยบายความเป็นส่วนตัว (PDPA Consent Form)", en: "Privacy Policy (PDPA Consent Form)" },
+        step1Subtitle: { th: "หนังสือให้ความยินยอมในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล", en: "Consent for Collection, Use, and Disclosure of Personal Data" },
+        pdpaConsentLabel: { th: "ข้าพเจ้าได้อ่านและทำความเข้าใจรายละเอียดข้างต้น และยินยอมให้บริษัทประมวลผลข้อมูลส่วนบุคคลของข้าพเจ้าตามวัตถุประสงค์ที่ระบุไว้ <span class=\"text-danger\">*</span>", en: "I have read and understood the details above, and I consent to the processing of my personal data as specified. <span class=\"text-danger\">*</span>" },
+        step2Title: { th: "ธุรกิจของคุณ", en: "Your Business" },
+        step2Desc: { th: "บอกเราคร่าวๆ ว่าธุรกิจของคุณอยู่กลุ่มไหน", en: "Tell us briefly about your business industry." },
+        qBusinessType: { th: "ธุรกิจของคุณอยู่กลุ่มไหน? <span class=\"text-danger\">*</span>", en: "Which industry is your business in? <span class=\"text-danger\">*</span>" },
+        step3Title: { th: "เป้าหมาย & ปัญหา", en: "Goals & Problems" },
+        step3Desc: { th: "สิ่งที่คุณอยากได้ และสิ่งที่ติดขัดอยู่ตอนนี้", en: "What you want to achieve and what is holding you back." },
+        qMainGoal: { th: "เป้าหมายหลักตอนนี้? <span class=\"text-danger\">*</span>", en: "What is your main goal right now? <span class=\"text-danger\">*</span>" },
+        qMainProblem: { th: "ปัญหาหลักที่เจอ? <span class=\"text-danger\">*</span>", en: "What is the main problem you are facing? <span class=\"text-danger\">*</span>" },
+        step4Title: { th: "สถานะการตลาดปัจจุบัน", en: "Current Marketing Status" },
+        step4Desc: { th: "สถานะการยิงแอดและ LINE OA ของคุณตอนนี้", en: "Your current Ads and LINE OA status." },
+        qRunningAds: { th: "ตอนนี้ยิงแอดอยู่ไหม? <span class=\"text-danger\">*</span>", en: "Are you currently running ads? <span class=\"text-danger\">*</span>" },
+        qHasLineOA: { th: "มี LINE OA / ระบบเก็บ Lead? <span class=\"text-danger\">*</span>", en: "Do you have a LINE OA or a lead collection system? <span class=\"text-danger\">*</span>" },
+        step5Title: { th: "งบประมาณ & สิ่งที่อยากให้ช่วย", en: "Budget & Required Assistance" },
+        step5Desc: { th: "ช่วยให้เราแนะนำแพ็กเกจที่เหมาะกับคุณที่สุด", en: "Help us recommend the best package for you." },
+        qBudget: { th: "งบการตลาดต่อเดือน? <span class=\"text-danger\">*</span>", en: "What is your monthly marketing budget? <span class=\"text-danger\">*</span>" },
+        qHelpNeeded: { th: "อยากให้ SPARK ช่วยอะไรสุด? <span class=\"text-danger\">*</span>", en: "What do you need SPARK to help with the most? <span class=\"text-danger\">*</span>" },
+        step6Title: { th: "ติดต่อกลับ", en: "Contact Information" },
+        step6Desc: { th: "ขั้นตอนสุดท้าย ก่อนส่งข้อมูลเพื่อรับผลประเมิน", en: "The final step before submitting to receive your results." },
+        qWantContact: { th: "ต้องการให้ SPARK ติดต่อกลับเพื่อให้คำปรึกษาหรือไม่ <span class=\"text-danger\">*</span>", en: "Would you like SPARK to contact you for a consultation? <span class=\"text-danger\">*</span>" },
+        optWantContactYes: { th: "ต้องการ", en: "Yes, please contact me" },
+        optWantContactNo: { th: "ไม่ต้องการ", en: "No, thank you" },
+        contactSectionTitle: { th: "ข้อมูลสำหรับติดต่อกลับ", en: "Contact Details" },
+        labelName: { th: "ชื่อ - นามสกุล <span class=\"text-danger\">*</span>", en: "Full Name <span class=\"text-danger\">*</span>" },
+        labelEmail: { th: "Email Address <span class=\"text-danger\">*</span>", en: "Email Address <span class=\"text-danger\">*</span>" },
+        labelPhone: { th: "เบอร์โทรติดต่อ <span class=\"text-danger\">*</span>", en: "Phone Number <span class=\"text-danger\">*</span>" },
+        btnBack: { th: "ย้อนกลับ", en: "Back" },
+        btnNext: { th: "ถัดไป", en: "Next" },
+        btnSubmitLabel: { th: "ส่งข้อมูลเพื่อรับผลประเมิน", en: "Submit for Results" },
+      };
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        
+        // Toggle buttons style
+        document.getElementById('lang-th').className = lang === 'th' 
+          ? "px-3 py-1 text-[13px] font-medium rounded-full bg-primary text-white transition-all shadow-sm" 
+          : "px-3 py-1 text-[13px] font-medium rounded-full text-text-gray hover:bg-primary-light transition-all cursor-pointer";
+        document.getElementById('lang-en').className = lang === 'en' 
+          ? "px-3 py-1 text-[13px] font-medium rounded-full bg-primary text-white transition-all shadow-sm" 
+          : "px-3 py-1 text-[13px] font-medium rounded-full text-text-gray hover:bg-primary-light transition-all cursor-pointer";
+
+        // Update elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations[key] && translations[key][lang]) {
+            el.innerHTML = translations[key][lang];
+          }
+        });
+
+        // Update Select options and Placeholders using inline data tags
+        document.querySelectorAll('[data-th]').forEach(el => {
+          el.innerText = el.getAttribute(`data-${lang}`);
+        });
+        document.querySelectorAll('[data-th-placeholder]').forEach(el => {
+          el.placeholder = el.getAttribute(`data-${lang}-placeholder`);
+        });
+
+        // Update PDPA Content
+        document.getElementById('pdpaContent').innerHTML = lang === 'th' ? pdpaTH : pdpaEN;
+
+        // Refresh Step Indicator
+        updateStepIndicator();
+        
+        // Handle Submit button Loading State if currently submitting
+        const btnSubmit = document.getElementById('btnSubmit');
+        const btnSubmitLabel = document.getElementById('btnSubmitLabel');
+        if(btnSubmit.disabled) {
+          btnSubmitLabel.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">refresh</span> ' + (lang === 'th' ? 'กำลังประมวลผล...' : 'Processing...');
+        }
+      }
+
+      function updateStepIndicator() {
+        const template = currentLang === 'th' ? 'ขั้นตอน {0} จาก {1}' : 'Step {0} of {1}';
+        document.getElementById('stepLabel').textContent = template.replace('{0}', currentStep).replace('{1}', TOTAL_STEPS);
+      }
+
+      // Initialize default language
+      setLanguage('th');
+
+
+      // ================= EXISTING LOGIC =================
       let userLineId = "";
       window.onload = function() { initializeLiff("2006674119-kZ1RG7PE"); };
 
@@ -485,9 +600,7 @@
           })
           .catch(err => {
             console.error("Login/friendship check failed:", err);
-            // เช็คสถานะเพื่อนไม่ได้ (เช่นยังไม่เปิด permission "Friendship status" ใน LIFF app)
-            // ปล่อยให้กรอกฟอร์มต่อได้ ดีกว่าบล็อกผู้ใช้ทั้งหมดเพราะ config ผิด
-            showMobileForm();
+            showMobileForm(); // fallback อนุญาตให้ทำฟอร์มต่อ
           });
       }
 
@@ -538,7 +651,7 @@
         document.getElementById('btnNext').classList.toggle('hidden', step === TOTAL_STEPS);
         document.getElementById('btnSubmit').classList.toggle('hidden', step !== TOTAL_STEPS);
 
-        document.getElementById('stepLabel').textContent = 'ขั้นตอน ' + step + ' จาก ' + TOTAL_STEPS;
+        updateStepIndicator(); // Use translated step indicator
         const percent = Math.round((step / TOTAL_STEPS) * 100);
         document.getElementById('stepPercent').textContent = percent + '%';
         document.getElementById('progressBar').style.width = percent + '%';
@@ -586,6 +699,7 @@
         const businessType = document.getElementById('businessType').value;
         const otherSection = document.getElementById('otherBusinessSection');
         const otherInput = document.getElementById('otherBusiness');
+        // ถึงแม้จะเปลี่ยนภาษาแล้ว ค่า value ของ select ก็จะยังเป็นภาษาไทยต้นฉบับเหมือนเดิมไม่กระทบระบบ
         if (businessType === "H. อื่น ๆ") {
           otherSection.classList.remove('hidden'); otherInput.required = true;
         } else {
@@ -620,7 +734,8 @@
       function sendToGoogle() {
         const btnSubmit = document.getElementById('btnSubmit');
         const btnSubmitLabel = document.getElementById('btnSubmitLabel');
-        btnSubmitLabel.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">refresh</span> กำลังประมวลผล...';
+        
+        btnSubmitLabel.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">refresh</span> ' + (currentLang === 'th' ? 'กำลังประมวลผล...' : 'Processing...');
         btnSubmit.disabled = true;
 
         const contactRadio = document.querySelector('input[name="wantContact"]:checked');
@@ -657,18 +772,20 @@
         .then(response => response.json())
         .then(data => {
           if(data.status === "success") {
+             const successTitleText = currentLang === 'th' ? "ขอบคุณที่ตอบแบบสอบถาม" : "Thank You!";
+             const successDescText = currentLang === 'th' ? "ระบบได้ประมวลผลเสร็จสิ้นแล้ว<br>ท่านสามารถดูผลลัพธ์การประเมินโครงสร้างธุรกิจ<br>ได้ที่แชท <strong>LINE OA</strong> ทันทีครับ" : "Your assessment has been successfully processed.<br>You can view your business structure evaluation results<br>in the <strong>LINE OA</strong> chat immediately.";
+             const btnGoLineText = currentLang === 'th' ? "เปิดแชท LINE เพื่อดูผลลัพธ์" : "Open LINE Chat to View Results";
+
              const container = document.querySelector('.form-container');
              container.innerHTML = `
                <div class="text-center p-8 sm:p-12">
                  <div class="w-20 h-20 mx-auto bg-success/10 rounded-full flex items-center justify-center mb-6 animate-pop-in">
                    <span class="material-symbols-outlined text-success text-[40px]">check_circle</span>
                  </div>
-                 <h2 class="text-primary font-bold text-[24px] mb-3">ขอบคุณที่ตอบแบบสอบถาม</h2>
-                 <p class="text-[15px] text-text-gray leading-[1.7] mb-8">
-                   ระบบได้ประมวลผลเสร็จสิ้นแล้ว<br>ท่านสามารถดูผลลัพธ์การประเมินโครงสร้างธุรกิจ<br>ได้ที่แชท <strong>LINE OA</strong> ทันทีครับ
-                 </p>
+                 <h2 class="text-primary font-bold text-[24px] mb-3">${successTitleText}</h2>
+                 <p class="text-[15px] text-text-gray leading-[1.7] mb-8">${successDescText}</p>
                  <button id="btnGoToLine" class="w-full py-4 rounded-xl text-white font-semibold text-[16px] shadow-md transition-all hover:-translate-y-0.5" style="background: linear-gradient(135deg, #06C755 0%, #00B900 100%);">
-                   เปิดแชท LINE เพื่อดูผลลัพธ์
+                   ${btnGoLineText}
                  </button>
                </div>
              `;
@@ -683,14 +800,14 @@
              };
 
           } else {
-             alert("เกิดปัญหา: " + data.message);
-             btnSubmitLabel.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+             alert(currentLang === 'th' ? "เกิดปัญหา: " + data.message : "Error: " + data.message);
+             btnSubmitLabel.innerText = currentLang === 'th' ? "ส่งข้อมูลเพื่อรับผลประเมิน" : "Submit for Results";
              btnSubmit.disabled = false;
           }
         })
         .catch(error => {
-          alert("เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบอินเทอร์เน็ต");
-          btnSubmitLabel.innerText = "ส่งข้อมูลเพื่อรับผลประเมิน";
+          alert(currentLang === 'th' ? "เกิดข้อผิดพลาดในการส่งข้อมูล โปรดตรวจสอบอินเทอร์เน็ต" : "Connection error. Please check your internet connection.");
+          btnSubmitLabel.innerText = currentLang === 'th' ? "ส่งข้อมูลเพื่อรับผลประเมิน" : "Submit for Results";
           btnSubmit.disabled = false;
         });
       }
